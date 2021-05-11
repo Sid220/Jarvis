@@ -34,7 +34,7 @@ function send() {
             "b": "WEATHER"
     }]; */
     var fs = require('fs');
-    var data = JSON.parse(fs.readFileSync('favorite.json', 'utf8'));
+    var data = JSON.parse(fs.readFileSync('general.json', 'utf8'));
     function getCountryByCode(b) {
         console.log(data);
       return data.filter(
