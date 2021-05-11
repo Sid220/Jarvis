@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="vivify.min.css">
+    <meta charset="UTF-8">
+    <title>Sid, your personal assistant</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="master">
+        <div id="container">
+        <table>
+            <tbody>
+
+            </tbody>
+        </table>
+        </div>
+    <div id="slave">
+    <form id="form" class="w3-center" onsubmit="send()">
+        <input required maxlength="60" id="maininput" title="Type what you want to tell Sid." class="w3-border w3-round" placeholder="Tell Sid..." type="text">
+        <input type="submit" class="w3-border w3-round" value="Send">
+    </form>
+    </div>
+    </div>
+</body>
+</html>

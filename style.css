@@ -1,0 +1,99 @@
+#maininput {
+    width: 80%;
+    border-color: grey;
+    border-radius: 25px;
+    padding: 10px; 
+    height: 40px; 
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#maininput:focus {
+    outline: none;
+}
+input[type=submit] {
+    outline: none;
+    border-color: grey;
+    background-color: white;
+    border-radius: 25px;
+    padding: 9px; 
+    height: fit-content; 
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+.response {
+    border-radius: 25px;
+    background: rgba(134, 134, 134, 0.308);
+    padding: 10px; 
+    width: fit-content;
+    height: fit-content; 
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+#responsecontainer {
+    display: flex;
+}
+#container {
+    width: 100%;
+}
+table {
+    overflow-y:scroll;
+    height:100px;
+    width: 100%;
+}
+
+tr {
+    width: 100%;
+}
+#askcontainer {
+    float: right;
+    display: flex;
+}
+.askcontainer {
+    float: right;
+    display: flex;
+}
+.responsecontainer {
+    display: flex;
+}
+.ask {
+    border-radius: 25px;
+    background: #88b943de;
+    color: white;
+    padding: 10px; 
+    width: fit-content;
+    height: fit-content; 
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}  
+#master {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border: 5px solid white;
+    display: flex;
+    flex-direction: column;
+}
+#slave {
+    margin-top: auto;
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+.animate__animated.animate__backInUp {
+    --animate-duration: 0.5s;
+  }
+.profile {
+    width: 40px;
+    height: 40px;
+}
+iframe {
+    width: 500px;
+    height: 600px;
+    border: none;
+    outline: none;
+}
