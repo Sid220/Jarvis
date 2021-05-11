@@ -1,10 +1,83 @@
+// anything commented is unfinished
 {
     "favorite":[{
         "a": "Yellow, my logo's colour.",
-            "b": "COLOUR"
+        "b": "COLOUR"
     },
     {
-        // "a": "Ramen, It's Delicious! Would you like me to find you ramen places near you?",
-            "b": "FOOD"
+        "a": "Unfortunately, I can't eat. Yet.",
+        "b": "FOOD"
+    },
+    {
+        // "a": "I like JS-Solitaire, would you like to play?", NEED YES/NO AND js-solitaire: https://github.com/rjanjic/js-solitaire
+        "b": "GAME"
+    },
+    {
+        // "a": "I like everything on 92.5 The River, Bostons Independent Radio. Would you like me to play it?", NEED YES/NO AND 92.5 RADIO
+        "b": "SONG"
+    },
+    {
+        "a": "SPECIAL: NOT SURE WHAT RESPONSE SHOULD BE",
+        "b": "RAP"
+    },
+    {
+        // "a": "Battlebots, an international robot-fighting tournament.", NEED BATTLEBOTS TO BE BROWSER LINK
+        "b": "SPORT"
+    },
+    {
+        // "a": "Battlebots, an international robot-fighting tournament.", NEED BATTLEBOTS TO BE BROWSER LINK
+        "b": "SHOW"
+    }, 
+    {
+        "a": "SPECIAL: NOT SURE WHAT RESPONSE SHOULD BE",
+        "b": "MOVIE"
+    },
+    {
+        // "a": "Snakes.", NEED SNAKES TO BE BROWSER OR DICTIONARY LINK
+        "b": "ANIMAL"
+    },
+    {
+        "a": "Programming in anything but JQuery.",
+        "b": "HOBBY"
+    },
+    {
+        // "a": "Harry Potter.", NEED Harry Potter TO BE BROWSER LINK
+        "b": "BOOK"
+    },
+    {
+        "a": "I have never traveled so I can't say for sure.",
+        "b": "COUNTRY"
+    },
+    {
+        "a": "I have never traveled so I can't say for sure.",
+        "b": "CITY"
+    },
+    {
+        "a": "I have never traveled so I can't say for sure.",
+        "b": "PLACE"
+    },
+    {
+        "a": "Unfortunately, I can't eat. Yet.",
+        "b": "DESERT"
+    },
+    {
+        // "a": "Autumn", NEED AUTTUMN TO BE BROWSER LINK
+        "b": "SEASON"
+    },
+    {
+        "a": "Programming in anything but JQuery.",
+        "b": "ACTIVITY"
+    },
+    {
+        "a": "I like those trees with the weird vine things hanging down. Yeah those.",
+        "b": "PLANT"
+    },
+    {
+        "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
+        "b": "ACTOR"
+    },
+    {
+    "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
+    "b": "ACTRESS"
     }]
 }
