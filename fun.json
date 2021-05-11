@@ -1,0 +1,10 @@
+{
+    "favorite":[{
+        "a": "Yellow, my logo's colour.",
+            "b": "COLOUR"
+    },
+    {
+        // "a": "Ramen, It's Delicious! Would you like me to find you ramen places near you?",
+            "b": "FOOD"
+    }]
+}
