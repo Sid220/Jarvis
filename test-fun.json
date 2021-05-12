@@ -1,0 +1,62 @@
+{
+    "favorite":[{
+        "a": "Yellow, my logo's colour.",
+        "b": "COLOUR"
+    },
+    {
+        "a": "Unfortunately, I can't eat. Yet.",
+        "b": "FOOD"
+    },
+    {
+        "a": "SPECIAL: NOT SURE WHAT RESPONSE SHOULD BE",
+        "b": "RAP"
+    }, 
+    {
+        "a": "SPECIAL: NOT SURE WHAT RESPONSE SHOULD BE",
+        "b": "MOVIE"
+    },
+    {
+        "a": "Programming in anything but JQuery.",
+        "b": "HOBBY"
+    },
+    {
+        "a": "I have never traveled so I can't say for sure.",
+        "b": "COUNTRY"
+    },
+    {
+        "a": "I have never traveled so I can't say for sure.",
+        "b": "CITY"
+    },
+    {
+        "a": "I have never traveled so I can't say for sure.",
+        "b": "PLACE"
+    },
+    {
+        "a": "Unfortunately, I can't eat. Yet.",
+        "b": "DESERT"
+    },
+    {
+        "a": "Programming in anything but JQuery.",
+        "b": "ACTIVITY"
+    },
+    {
+        "a": "I like those trees with the weird vine things hanging down. Yeah those.",
+        "b": "PLANT"
+    },
+    {
+        "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
+        "b": "ACTOR"
+    },
+    {
+    "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
+    "b": "ACTRESS"
+    },
+    {
+    "a": "You, I love the mouse and keyboard orchestra you make! 🤘⌨️🎼🖱️🎵🖥️",
+    "b": "MUSICIAN"
+    },
+    {
+        "a": "Hmm... I sure love ASCII art : )",
+        "b": "ARTIST"
+    }]
+}

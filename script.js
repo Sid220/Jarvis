@@ -33,14 +33,6 @@ function send() {
         "a": "<iframe src='https://www.bing.com/search?q=weather'>Loading...</iframe>",
             "b": "WEATHER"
     }]; */
-    var fs = require('fs');
-    var data = JSON.parse(fs.readFileSync('general.json', 'utf8'));
-    function getCountryByCode(b) {
-        console.log(data);
-      return data.filter(
-          function(data){return data.b == b}
-      );
-    }
     var filterone = document.getElementById("maininput").value.toUpperCase();
     var filtertwo = filterone.replace("?", "");
     var filterthree = filtertwo.replace(" OF", "");
@@ -72,8 +64,24 @@ function send() {
         
         }
     }
+    var unneeded = "If you see this on Github you just won yourself 500 worthless bonus points!";
+    if (filterseven[0] == "FAVORITE") {
+        filterseven.splice(0, 1); 
+        var fs = require('fs');
+        globalThis.data = JSON.parse(fs.readFileSync('test-fun.json', 'utf8')).favorite;
+    }
+    else {
+        var fs = require('fs');
+        globalThis.data = JSON.parse(fs.readFileSync('general.json', 'utf8'));
+    }
     var final = filterseven.join(" ");
     console.log(filterseven);
+    function getCountryByCode(b) {
+        console.log(data);
+      return data.filter(
+          function(data){return data.b == b}
+      );
+    }
     var found = getCountryByCode(final);
     if (found[0]==undefined) {
         var notfoundsearchfone = document.getElementById("maininput").value.split(" ");
