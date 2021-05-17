@@ -28,6 +28,10 @@
         "b": "CITY"
     },
     {
+        "a": "I like JS-Solitaire, would you like to play?<br><button class='yesandno w3-border w3-round' id='yestojssolitaire' onclick='yestojssolitairefunc()'>Yes</button> <button onclick='notojssolitairefunc()' id='notojssolitaire' class='yesandno w3-border w3-round'>Naw</button>",
+        "b": "GAME"
+    },
+    {
         "a": "I have never traveled so I can't say for sure.",
         "b": "PLACE"
     },

@@ -6,33 +6,19 @@ window.onload = function() {
     setInterval(() => {
         window.scrollTo(0,document.querySelector("#container").scrollHeight);
     }, 5);    
+    const battery = require("battery");
+ 
+(async () => {
+    const { level, charging } = await battery();
+ 
+    console.log(level);
+    //=> 0.8
+ 
+    console.log(charging);
+    //=> true
+})();
 }
 function send() {
- /*    var data = [{
-        "a": "Great! Thanks for asking!",
-            "b": "HOW ARE YOU"
-    }, {
-        "a": "Yellow, my logo's colour.",
-            "b": "FAVORITE COLOUR"
-    }, {
-        "a": "I'm afraid I can't answer philosophical questions yet.",
-            "b": "MEANING LIFE"
-    }, {
-        "a": "Howdy!",
-            "b": "HELLO"
-    }, {
-        "a": "Howdy!",
-            "b": "HI"
-    }, {
-        "a": "Howdy",
-            "b": "HOWDY"
-    }, {
-        "a": "My name is Sid.",
-            "b": "NAME"
-    }, {
-        "a": "<iframe src='https://www.bing.com/search?q=weather'>Loading...</iframe>",
-            "b": "WEATHER"
-    }]; */
     var filterone = document.getElementById("maininput").value.toUpperCase();
     var filtertwo = filterone.replace("?", "");
     var filterthree = filtertwo.replace(" OF", "");
@@ -86,7 +72,7 @@ function send() {
     if (found[0]==undefined) {
         var notfoundsearchfone = document.getElementById("maininput").value.split(" ");
         var notfoundsearch
-        globalThis.notfoundsearch = notfoundsearchfone.join("+");
+        globalThis.notfoundsearch = notfoundsearchfone.join("%20");
         found = [{
             "a": "Hmm... I don't seem to understand. Would you like to <u><a target='blank' style='cursor:pointer' onclick='openinbrowser(notfoundsearch)'>search on Searx</a></u>?",
                 "b": "ERROR"
@@ -114,4 +100,21 @@ function openinbrowser(url) {
 
     shell.openExternal("https://searx.nevrlands.de/searx/search?q="+ url)
     
+}
+    function requestFullScreen(element) {
+        // Supports most browsers and their versions.
+        var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+    
+        if (requestMethod) { // Native full screen.
+            requestMethod.call(element);
+        } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+            var wscript = new ActiveXObject("WScript.Shell");
+            if (wscript !== null) {
+                wscript.SendKeys("{F11}");
+            }
+        }
+    }
+function fullscreenaniframeweather() {
+    var elem = document.getElementById("weather"); // Make the body go full screen.
+    requestFullScreen(elem);
 }
