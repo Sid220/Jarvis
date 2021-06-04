@@ -52,15 +52,30 @@
         "b": "ACTOR"
     },
     {
-    "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
-    "b": "ACTRESS"
+        "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
+        "b": "ACTRESS"
     },
     {
-    "a": "You, I love the mouse and keyboard orchestra you make! 🤘⌨️🎼🖱️🎵🖥️",
-    "b": "MUSICIAN"
+        "a": "You, I love the mouse and keyboard orchestra you make! 🤘⌨️🎼🖱️🎵🖥️",
+        "b": "MUSICIAN"
     },
     {
         "a": "Hmm... I sure love ASCII art : )",
         "b": "ARTIST"
+    },{
+        "a": "<u onclick='openinaniframe(`https://www.bing.com/search?q=battlebots`, `Battlebots`);' class='link'>Battlebots</u>, an international robot-fighting tournament.",
+        "b": "SPORT"
+    },{
+        "a": "<u onclick='openinaniframe(`https://www.bing.com/search?q=battlebots`, `Battlebots`);' class='link'>Battlebots</u>, an international robot-fighting tournament.",
+        "b": "SHOW"
+    },{
+        "a": "<u onclick='openinaniframe(`https://www.bing.com/search?q=harry%20potter`, `Harry Potter`);' class='link'>Harry Potter</u>.",
+        "b": "BOOK"
+    },{
+        "a": "<u onclick='lookupinadictionary(`snakes`)' class='link'>Snakes</u>",
+        "b": "ANIMAL"
+    },{
+        "a": "<u onclick='lookupinadictionary(`autumn`)' class='link'>Autumn</u>",
+        "b": "SEASON"
     }]
 }

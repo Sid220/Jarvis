@@ -17,9 +17,24 @@
         "a": "My name is Jarvis.",
             "b": "NAME"
     }, {
-        "a": "<iframe id='weather' src='https://www.bing.com/search?q=weather'>Loading...</iframe><br><button class='yesandno w3-border w3-round' onClick='fullscreenaniframeweather()'><i class='bi bi-fullscreen'></i></button>",
+        "a": "<iframe id='weather' src='https://www.bing.com/search?q=weather'>Loading...</iframe><br>Weather by <a href='https://www.bing.com/search?q=weather'>Bing</a> <button class='yesandno w3-border w3-round' onClick='fullscreenaniframeweather()'><i class='bi bi-fullscreen'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://www.bing.com/search?q=weather`)'><i class='bi bi-box-arrow-up-right'></i></button>",
             "b": "WEATHER"
     }, {
-        "a": "<iframe src='https://98.js.org/index.html'>Loading...</iframe>",
+        "a": "<iframe id='desktop' src='https://98.js.org/'>Loading...</iframe><br>Windows 98 Desktop by <a href='https://github.com/1j01/98'>1j01</a> <button class='yesandno w3-border w3-round' onClick='fullscreenaniframe98()'><i class='bi bi-fullscreen'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://98.js.org`)'><i class='bi bi-box-arrow-up-right'></i></button>",
             "b": "WINDOWS 98 DESKTOP"
+    }, {
+        "a": "<iframe id='picker' src='https://www.sidprojects.ml/jarvis-cloud/emoji-copier/'>Loading...</iframe><br>Emoji Copier by <a href='https://github.com/leonelngande/emoji-copier'>leonelngande</a> <button class='yesandno w3-border w3-round' onClick='fullscreenaniframeemoji()'><i class='bi bi-fullscreen'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://www.sidprojects.ml/jarvis-cloud/emoji-copier/`)'><i class='bi bi-box-arrow-up-right'></i></button>",
+            "b": "EMOJI PICKER"
+    }, {
+        "a": "<iframe id='picker' src='https://www.sidprojects.ml/jarvis-cloud/emoji-copier/'>Loading...</iframe><br>Emoji Copier by <a href='https://github.com/leonelngande/emoji-copier'>leonelngande</a> <button class='yesandno w3-border w3-round' onClick='fullscreenaniframeemoji()'><i class='bi bi-fullscreen'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://www.sidprojects.ml/jarvis-cloud/emoji-copier/`)'><i class='bi bi-box-arrow-up-right'></i></button>",
+            "b": "EMOJI COPIER"
+    }, {
+        "a": "<iframe id='picker' src='https://www.sidprojects.ml/jarvis-cloud/emoji-copier/'>Loading...</iframe><br>Emoji Copier by <a href='https://github.com/leonelngande/emoji-copier'>leonelngande</a> <button class='yesandno w3-border w3-round' onClick='fullscreenaniframeemoji()'><i class='bi bi-fullscreen'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://www.sidprojects.ml/jarvis-cloud/emoji-copier/`)'><i class='bi bi-box-arrow-up-right'></i></button>",
+            "b": "EMOJI"
+    }, {
+        "a": "<iframe id='picker' src='https://www.sidprojects.ml/jarvis-cloud/emoji-copier/'>Loading...</iframe><br>Emoji Copier by <a href='https://github.com/leonelngande/emoji-copier'>leonelngande</a> <button class='yesandno w3-border w3-round' onClick='fullscreenaniframeemoji()'><i class='bi bi-fullscreen'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://www.sidprojects.ml/jarvis-cloud/emoji-copier/`)'><i class='bi bi-box-arrow-up-right'></i></button>",
+            "b": "PICK EMOJI"
+    }, {
+        "a": "<audio src='https://nebcoradio.com:8443/WXRV' controls></audio>",
+        "b": "PLAY 92.5 THE RIVER"
     }]

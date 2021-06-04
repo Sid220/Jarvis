@@ -9,10 +9,6 @@
         "b": "FOOD"
     },
     {
-        // "a": "I like JS-Solitaire, would you like to play?", NEED YES/NO AND js-solitaire: https://github.com/rjanjic/js-solitaire
-        "b": "GAME"
-    },
-    {
         // "a": "I like everything on 92.5 The River, Bostons Independent Radio. Would you like me to play it?", NEED YES/NO AND 92.5 RADIO
         "b": "SONG"
     },
@@ -21,11 +17,11 @@
         "b": "RAP"
     },
     {
-        // "a": "Battlebots, an international robot-fighting tournament.", NEED BATTLEBOTS TO BE BROWSER LINK
+        "a": "Battlebots, an international robot-fighting tournament.",
         "b": "SPORT"
     },
     {
-        // "a": "Battlebots, an international robot-fighting tournament.", NEED BATTLEBOTS TO BE BROWSER LINK
+        "a": "Battlebots, an international robot-fighting tournament.",
         "b": "SHOW"
     }, 
     {
@@ -33,7 +29,7 @@
         "b": "MOVIE"
     },
     {
-        // "a": "Snakes.", NEED SNAKES TO BE BROWSER OR DICTIONARY LINK
+       "a": "Snakes.",
         "b": "ANIMAL"
     },
     {
@@ -41,7 +37,7 @@
         "b": "HOBBY"
     },
     {
-        // "a": "Harry Potter.", NEED Harry Potter TO BE BROWSER LINK
+        "a": "Harry Potter.",
         "b": "BOOK"
     },
     {
@@ -61,7 +57,7 @@
         "b": "DESERT"
     },
     {
-        // "a": "Autumn", NEED AUTTUMN TO BE BROWSER LINK
+        "a": "Autumn",
         "b": "SEASON"
     },
     {
