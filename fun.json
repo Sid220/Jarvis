@@ -1,4 +1,3 @@
-// anything commented is unfinished
 {
     "favorite":[{
         "a": "Yellow, my logo's colour.",
@@ -9,36 +8,16 @@
         "b": "FOOD"
     },
     {
-        // "a": "I like everything on 92.5 The River, Bostons Independent Radio. Would you like me to play it?", NEED YES/NO AND 92.5 RADIO
-        "b": "SONG"
-    },
-    {
-        "a": "SPECIAL: NOT SURE WHAT RESPONSE SHOULD BE",
+        "a": "I despise rap music.",
         "b": "RAP"
-    },
-    {
-        "a": "Battlebots, an international robot-fighting tournament.",
-        "b": "SPORT"
-    },
-    {
-        "a": "Battlebots, an international robot-fighting tournament.",
-        "b": "SHOW"
     }, 
     {
-        "a": "SPECIAL: NOT SURE WHAT RESPONSE SHOULD BE",
+        "a": "<u onclick='openinaniframe(`https://www.bing.com/search?q=harry%20potter`, `Harry Potter`);' class='link'>Harry Potter</u>.",
         "b": "MOVIE"
-    },
-    {
-       "a": "Snakes.",
-        "b": "ANIMAL"
     },
     {
         "a": "Programming in anything but JQuery.",
         "b": "HOBBY"
-    },
-    {
-        "a": "Harry Potter.",
-        "b": "BOOK"
     },
     {
         "a": "I have never traveled so I can't say for sure.",
@@ -49,16 +28,16 @@
         "b": "CITY"
     },
     {
+        "a": "I like JS-Solitaire, would you like to play?<br><button class='yesandno w3-border w3-round' id='yestojssolitaire' onclick='yestojssolitairefunc()'>Yes</button> <button onclick='notojssolitairefunc()' id='notojssolitaire' class='yesandno w3-border w3-round'>Naw</button>",
+        "b": "GAME"
+    },
+    {
         "a": "I have never traveled so I can't say for sure.",
         "b": "PLACE"
     },
     {
         "a": "Unfortunately, I can't eat. Yet.",
         "b": "DESERT"
-    },
-    {
-        "a": "Autumn",
-        "b": "SEASON"
     },
     {
         "a": "Programming in anything but JQuery.",
@@ -73,15 +52,33 @@
         "b": "ACTOR"
     },
     {
-    "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
-    "b": "ACTRESS"
+        "a": "You, you actually made me almost think you cared about me with all the 'your favorite questions'. 😔",
+        "b": "ACTRESS"
     },
     {
-    "a": "You, I love the mouse and keyboard orchestra you make! 🤘⌨️🎼🖱️🎵🖥️",
-    "b": "MUSICIAN"
+        "a": "You, I love the mouse and keyboard orchestra you make! 🤘⌨️🎼🖱️🎵🖥️",
+        "b": "MUSICIAN"
     },
     {
-        "a": "Hmm... I sure love ASCII art : )",
+        "a": "Hmm... I sure love ASCII art : )<br> ,._<br>@\"_.)~<br>  !! ",
         "b": "ARTIST"
+    },{
+        "a": "<u onclick='openinaniframe(`https://www.bing.com/search?q=battlebots`, `Battlebots`);' class='link'>Battlebots</u>, an international robot-fighting tournament.",
+        "b": "SPORT"
+    },{
+        "a": "<u onclick='openinaniframe(`https://www.bing.com/search?q=battlebots`, `Battlebots`);' class='link'>Battlebots</u>, an international robot-fighting tournament.",
+        "b": "SHOW"
+    },{
+        "a": "<u onclick='openinaniframe(`https://www.bing.com/search?q=harry%20potter`, `Harry Potter`);' class='link'>Harry Potter</u>.",
+        "b": "BOOK"
+    },{
+        "a": "<u onclick='lookupinadictionary(`snakes`)' class='link'>Snakes</u>",
+        "b": "ANIMAL"
+    },{
+        "a": "<u onclick='lookupinadictionary(`autumn`)' class='link'>Autumn</u>",
+        "b": "SEASON"
+    }, {
+        "a": "I like everything on 92.5 The River, Bostons Independent Radio. Would you like me to play it?<br><button class='yesandno w3-border w3-round' id='yestotheriver' onclick='yestotheriverfunc()'>Yes</button> <button onclick='nototheriverfunc()' id='nototheriver' class='yesandno w3-border w3-round'>No</button>",
+        "b": "SONG"
     }]
 }

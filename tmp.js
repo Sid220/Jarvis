@@ -1,7 +1,7 @@
 if(special != null) {
     console.log("dictionary");
     found = [{
-        "a": "<iframe src='https://www.sidprojects.ml/jarvis-cloud/dictionary/index.php?word=" + document.getElementById("maininput").value + "'>Loading...</iframe>",
+        "a": "<iframe src='https://www.vestal.ml/jarvis-cloud/dictionary/index.php?word=" + document.getElementById("maininput").value + "'>Loading...</iframe>",
         "b": "DICTIONARY"
     }];
     dontrunnotfound = "yes";

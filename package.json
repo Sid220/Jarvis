@@ -10,7 +10,11 @@
     "dependencies": {
         "battery": "^1.0.1",
         "electron": "^12.0.9",
-        "shell": "^0.5.0"
+        "electron-context-menu": "^3.1.0",
+        "loudness": "^0.4.1",
+        "power-off": "^1.0.1",
+        "run-in-terminal": "^0.0.3",
+        "shell": "^0.8.4"
     },
     "devDependencies": {
         "electron-rebuild": "^2.3.5"
