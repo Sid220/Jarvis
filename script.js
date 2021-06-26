@@ -129,19 +129,22 @@ function send() {
     var filterfive = filterfour.replace("WHAT IS", "WHATS");
     var filtersix = filterfive.replace("COLOR", "COLOUR");
     var filterseven = filtersix.split(" ");
-    if (filterseven[0] == "WHATS") {
-        for( var i = 0; i < filterseven.length; i++){ 
-    
-            if ( filterseven[i] === "WHATS") { 
-        
-                filterseven.splice(i, 1); 
-                if (filterseven[0] === "YOUR" || filterseven[0] === "THE")
+    if (filterseven[0] == "WHAT") {
+        filterseven.splice(0,1);
+        if (filterseven[0] === "IS") {
+            filterseven.splice(0,1);
+            }
+            if (filterseven[0] === "THE") {
                 filterseven.splice(0,1);
+                }
+    }
+    if (filterseven[0] == "WHATS") {
+        filterseven.splice(0,1);
+                if (filterseven[0] === "YOUR" || filterseven[0] === "THE") {
+                filterseven.splice(0,1);
+                }
                 
             }
-        
-        }
-    }
     var unneeded = "If you see this on Github you just won yourself 500 worthless bonus points!";
     var final = filterseven.join(" ");
     console.log(filterseven);
@@ -217,6 +220,9 @@ function send() {
             td.innerHTML = '<br><br><br><p class="ask vivify popInBottom duration-300">'+ byId("maininput").value +'</p><img class="profile" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkiQ3MylgdUv2uKdXl1htHFeHYcmoLVRCqeA&amp;usqp=CAU">';
         }
         tr.appendChild(td);
+        if(final == "CLEAR") {
+            while (document.getElementsByTagName(`tbody`)[0].firstChild) {document.getElementsByTagName(`tbody`)[0].removeChild(document.getElementsByTagName(`tbody`)[0].firstChild);}
+        }
         // Clean up
         byId("maininput").value = null;
         special = null;

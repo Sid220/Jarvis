@@ -79,4 +79,43 @@
     }, {
         "a": "Would you like to play a game?<br><button class='yesandno w3-border w3-round' id='yestogame' onclick='yestogamefunc()'>Yes</button> <button onclick='notogamefunc()' id='notogame' class='yesandno w3-border w3-round'>No</button>",
         "b": "IM BORED"
+    }, {
+        "a": "<iframe id='rolladie' src='https://www.bing.com/search?q=roll+a+die&form=QBLH&sp=-1&pq=roll+a+di&sc=8-9&qs=n&sk=&cvid=EDF78A0C6AD64BFCA1CE8B0ECB4CF027'>Loading...</iframe><br><button class='yesandno w3-border w3-round' onClick='fullscreensomethin(`rolladie`)'><i class='fa fa-expand'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://www.bing.com/search?q=roll+a+die&form=QBLH&sp=-1&pq=roll+a+di&sc=8-9&qs=n&sk=&cvid=EDF78A0C6AD64BFCA1CE8B0ECB4CF027`)'><i class='fas fa-external-link-alt'></i></button>",
+        "b": "ROLL A DIE"
+    }, {
+        "a": "<iframe id='flipacoin' src='https://mrdivinemaniac.github.io/flip-a-coin/'>Loading...</iframe><br><button class='yesandno w3-border w3-round' onClick='fullscreensomethin(`flipacoin`)'><i class='fa fa-expand'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://mrdivinemaniac.github.io/flip-a-coin/`)'><i class='fas fa-external-link-alt'></i></button>",
+        "b": "FLIP A COIN"
+    }, {
+        "a": "<iframe src='https://free.timeanddate.com/clock/i7v3ci1r/n43/fcfff/tct/pct' style='width:84px; height:21px;' allowtransparency='true' frameborder='0' width='84' height='21'></iframe><br>All time is in EST",
+        "b": "TIME IS IT"
+    }, {
+        "a": "<iframe src='https://free.timeanddate.com/clock/i7v3ci1r/n43/fcfff/tct/pct' style='width:84px; height:21px;' allowtransparency='true' frameborder='0' width='84' height='21'></iframe><br>All time is in EST",
+        "b": "TIME"
+    }, {
+        "a": "<iframe src='https://free.timeanddate.com/clock/i7v3ci1r/n43/fcfff/tct/pct/tt1/tw0' style='width:200px; height:21px;' allowtransparency='true' frameborder='0' width='84' height='21'></iframe><br>All time is in EST",
+        "b": "DATE"
+    }, {
+        "a": "Clearing...",
+        "b": "CLEAR"
+    }, {
+        "a": "I'm 1 Year Old!",
+        "b": "HOW OLD ARE YOU"
+    }, {
+        "a": "Baaaaston",
+        "b": "WHERE ARE YOU FROM"
+    }, {
+        "a": "If your on Linux or Mac: /usr/bin/jarvis, On Windows: /Program_Files/Jarvis/jarvis.exe",
+        "b": "WHERE DO YOU LIVE"
+    }, {
+        "a": "Iiiii... No",
+        "b": "CAN YOU RAP"
+    }, {
+        "a": "NOOOO, I was written the <i>au naturel</i> way with <b><u>PURE</u></b> JavaScript.",
+        "b": "DO YOU LIKE JQUERY"
+    }, {
+        "a": "== 'bad'",
+        "b": "JQUERY"
+    }, {
+        "a": "Excuse Me! What does it look like I'm doing!",
+        "b": "DO YOU DO FOR A LIVING"
     }]
