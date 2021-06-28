@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <title>About Today's Image</title>
+        <style>
+          /* The Close Button */
+          .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+          }
+          
+          .close:hover,
+          .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+          }</style></head>
+    <body>
+        <!-- Modal content -->
+          <div class="modal-content w3-container">
+                <span class="close" onclick="self.close()">&times;</span>
+            <center>
+                <h1>Background Image:</h1>
+                <img id="img" style="height: 100px;" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Loader.gif"><p id="by">Loading...</p><p id="loc"></p><a
+                        href="https://pixabay.com/service/license/">Pixabay</a><br><button
+                        onclick="openinbrowser(data[0].url)"
+                        class="w3-button" id="down">Download</button>
+            </center>
+             
+        </div>
+        <script>
+function openinbrowser(url) {
+    const { shell } = require('electron');
+    shell.openExternal(url);
+}
+getText("https://www.vestal.ml/jarvis-cloud/change.json");
+
+async function getText(file) {
+  let myObject = await fetch(file);
+  let myText = await myObject.text();
+	data = JSON.parse(myText);
+  console.log(data);
+  document.getElementById("by").innerHTML = "By: " + data[0].by;
+  if(data[0].loc != "undefined") {
+  document.getElementById("loc").innerHTML = "Location: " + data[0].loc;
+  }
+  document.getElementById("img").src = data[0].cdn;
+}
+
+        </script>
+    </body>
+</html>
