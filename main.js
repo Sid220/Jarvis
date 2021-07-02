@@ -2,6 +2,16 @@ const { create } = require("domain");
 const {app, BrowserWindow, Menu} = require("electron");
 const os = require("os");
 const contextMenu = require('electron-context-menu');
+/* const Electrolytic = require('electrolytic')
+const electrolytic = Electrolytic({
+    appKey: 'zpVJlLuSxD49A618hnvc'
+  })
+  
+  electrolytic
+    .analytics
+    .enable(true)
+    .use(app)
+    .report() */
 let mainWindow;
 function createWindow() {
     mainWindow = new BrowserWindow({

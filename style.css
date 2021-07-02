@@ -54,7 +54,13 @@ table {
     height:100px;
     width: 100%;
 }
-
+.bottom-buttn {
+    font-size:xx-small;
+}
+.unbreakable {
+    line-break: strict;
+    white-space: nowrap;
+}
 tr {
     width: 100%;
 }
