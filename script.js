@@ -168,6 +168,7 @@ function send() {
         data = JSON.parse(fs.readFileSync('general.json', 'utf8'));
     }
     if (special != null) {
+        specialBoolean = 1;
         if (special == "define") {
             console.log("dictionary");
             found = [{
@@ -213,7 +214,8 @@ function send() {
                     found = [{
                         "a": "<iframe src='https://vclock.com/set-timer-for-" + finaltime + "'>Loading...</iframe>",
                         "b": "TIMER"
-                    }];                }
+                    }];
+                }
             }
             else if (byId("maininput").value.toUpperCase().includes("SECOND") == true) {
                 if (isNaN(byId("maininput").value[0]) == false && byId("maininput").value[0] != " ") {
@@ -236,7 +238,8 @@ function send() {
                     found = [{
                         "a": "<iframe src='https://vclock.com/set-timer-for-" + finaltime + "'>Loading...</iframe>",
                         "b": "TIMER"
-                    }];                }
+                    }];
+                }
             }
             else {
                 found = [{
@@ -247,9 +250,12 @@ function send() {
         }
     }
     else {
+        specialBoolean = 0;
         found = getCountryByCode(final);
     }
+    failBoolean = 0;
     if (found[0] == undefined) {
+        failBoolean = 1;
         notfoundsearchfone = byId("maininput").value.split(" ");
         var notfoundsearch
         globalThis.notfoundsearch = "https://www.bing.com/search?q=" + notfoundsearchfone.join("%20");
@@ -288,6 +294,11 @@ function send() {
     if (final == "CLEAR") {
         while (document.getElementsByTagName(`tbody`)[0].firstChild) { document.getElementsByTagName(`tbody`)[0].removeChild(document.getElementsByTagName(`tbody`)[0].firstChild); }
     }
+    // Send info to server (see jarvis-server-side repo)
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "http://localhost/jarvis-cloud/sendtoserver.php?pass=pass&command=" + byId("maininput").value + "&fail=" + failBoolean + "&special=" + specialBoolean, true);
+    xmlhttp.send();
+    // Back to your regularly scheduled programing
     // Clean up
     byId("maininput").value = null;
     special = null;
@@ -377,8 +388,8 @@ function check() {
 }
 function openanapp() {
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="app | command" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Open | </button>');
-            byId("maininput").value = null;
-            special = "open";
+    byId("maininput").value = null;
+    special = "open";
 }
 function setaTimer() {
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="x Minute(s) | x Second(s)" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Set a timer for | </button>');
