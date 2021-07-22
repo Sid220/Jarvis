@@ -1,8 +1,8 @@
 {
-    "name": "Sid",
-    "version": "0.1.0",
-    "author": "your name",
-    "description": "My Electron app",
+    "name": "jarvis",
+    "version": "0.0.1",
+    "author": "Vestal",
+    "description": "Your Personal Assistant",
     "main": "main.js",
     "scripts": {
         "start": "electron ."
