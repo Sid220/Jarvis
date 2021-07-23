@@ -20,7 +20,7 @@
         "a": "My name is Jarvis.",
             "b": "NAME"
     }, {
-        "a": "<iframe id='weather' src='https://www.bing.com/search?q=weather'>Loading...</iframe><br>Weather by <a href='https://www.bing.com/search?q=weather'>Bing</a> <button class='yesandno w3-border w3-round' onClick='fullscreensomethin(`weather`)'><i class='fa fa-expand'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://www.bing.com/search?q=weather`)'><i class='fas fa-external-link-alt'></i></button>",
+        "a": "<iframe src='https://www.meteoblue.com/en/weather/widget/three?geoloc=detect&nocurrent=0&noforecast=0&days=5&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image'  frameborder='0' scrolling='NO' allowtransparency='true' sandbox='allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox' style='width: 575px; height: 601px'></iframe><br><!-- DO NOT REMOVE THIS LINK --><a href='https://www.meteoblue.com/en/weather/week/index?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget' target='_blank'>meteoblue</a>",
             "b": "WEATHER"
     },{
         "a": "<iframe id='stopwatch' src='https://stopwatch.net/index.html'>Loading...</iframe><br>Stopwatch by <a href='https://stopwatch.net/index.html'>stopwatch.net</a> <button class='yesandno w3-border w3-round' onClick='fullscreensomethin(`stopwatch`)'><i class='fa fa-expand'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`https://stopwatch.net/index.html`)'><i class='fas fa-external-link-alt'></i></button>",
