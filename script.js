@@ -294,14 +294,18 @@ function send() {
     if (final == "CLEAR") {
         while (document.getElementsByTagName(`tbody`)[0].firstChild) { document.getElementsByTagName(`tbody`)[0].removeChild(document.getElementsByTagName(`tbody`)[0].firstChild); }
     }
-    // Send info to server (see jarvis-server-side repo)
+
+    // UNCOMMENT ON RELEASE
+/*     // Send info to server (see jarvis-server-side repo)
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "http://localhost/jarvis-cloud/sendtoserver.php?pass=pass&command=" + byId("maininput").value + "&fail=" + failBoolean + "&special=" + specialBoolean, true);
     xmlhttp.send();
-    // Back to your regularly scheduled programing
+    // Back to your regularly scheduled programing */
+    // This was: UNCOMMENT ON RELEASE
+
     // Clean up
     byId("maininput").value = null;
-    special = null;
+    cleanup();
     if (byId('form').firstChild.id == "special") {
         byId("special").remove();
     }
@@ -339,6 +343,7 @@ function lookupinadictionary(query) {
     tr.appendChild(td);
 }
 function cleanup() {
+    byId("maininput").placeholder = "Tell Jarvis...";
     special = null;
 }
 function openinbrowser(url) {
@@ -387,21 +392,25 @@ function check() {
     }, false);
 }
 function openanapp() {
+    byId("maininput").placeholder = "app | command";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="app | command" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Open | </button>');
     byId("maininput").value = null;
     special = "open";
 }
 function setaTimer() {
+    byId("maininput").placeholder = "x Minute(s) | x Second(s)";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="x Minute(s) | x Second(s)" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Set a timer for | </button>');
     byId("maininput").value = null;
     special = "timer";
 }
 function lookupquery() {
+    byId("maininput").placeholder = "query";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="query" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Lookup | </button>');
     byId("maininput").value = null;
     special = "lookup";
 }
 function defineaWord() {
+    byId("maininput").placeholder = "word";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="word" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Define | </button>');
     byId("maininput").value = null;
     special = "define";

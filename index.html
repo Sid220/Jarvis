@@ -7,7 +7,7 @@
     <script src='yesandno.js'></script>
     <link rel="stylesheet" href="vivify.min.css">
     <meta charset="UTF-8">
-    <title>Sid, your personal assistant</title>
+    <title>Jarvis, your personal assistant</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -95,15 +95,16 @@
         </div>
         <div id="slave">
             <form id="form" class="w3-center" onsubmit="send()">
-                <input required maxlength="60" id="maininput" title="Type what you want to tell Sid."
-                    class="w3-border w3-round" onkeyup="check()" placeholder="Tell Sid..." type="text">
+                <input required maxlength="60" id="maininput" title="Type what you want to tell Jarvis."
+                    class="w3-border w3-round" onkeyup="check()" placeholder="Tell Jarvis..." type="text">
                 <input type="submit" class="w3-border w3-round" value="Send"><br>
                 <div class="unbreakable">
                 <button type="button" title="Set a timer" class="w3-border yesandno bottom-buttn" onclick='setaTimer()'><i class="fas fa-clock"></i> Set a timer</button>
                 <button type="button" title="Launch an app" class="w3-border yesandno bottom-buttn" onclick='openanapp()'><i class="fas fa-rocket"></i> Open an app</button>
                 <button type="button" title="Search the web" class="w3-border yesandno bottom-buttn" onclick='lookupquery()'><i class="fas fa-search"></i> Lookup something</button>
                 <button type="button" title="Define a word" class="w3-border yesandno bottom-buttn" onclick='defineaWord()'><i class="fas fa-book"></i> Define a word</button>
-                </div>
+                <button type="button" title="Flip a coin" class="w3-border yesandno bottom-buttn" onclick='openinaniframe(`https://mrdivinemaniac.github.io/flip-a-coin/`, `flip a coin`)'><i class="fas fa-coins"></i> Flip a coin</button>    
+            </div>
             </form>
         </div>
     </div>
