@@ -1,7 +1,9 @@
 const { create } = require("domain");
-const {app, BrowserWindow, Menu} = require("electron");
+const {app, BrowserWindow, Menu, shell} = require("electron");
 const os = require("os");
 const contextMenu = require('electron-context-menu');
+const join = require('path').join;
+const openAboutWindow = require('about-window').default;
 /* const Electrolytic = require('electrolytic')
 const electrolytic = Electrolytic({
     appKey: 'zpVJlLuSxD49A618hnvc'
@@ -47,14 +49,46 @@ function createWindow() {
                 {label:'Shopping', id:"shop", type: "checkbox",click() {mainWindow.loadURL("https://www.bing.com/shop?FORM=Z9LHS4");menu.getMenuItemById("shop").checked = true;menu.getMenuItemById("home").checked = false;menu.getMenuItemById("map").checked = false;menu.getMenuItemById("weather").checked = false;menu.getMenuItemById("money").checked = false;menu.getMenuItemById("news").checked = false}}
             ]
         }, {
-            label: "Edit", role: "editMenu"
+            label: "Edit", role: "editMenu",
+            submenu: [
+                {label:"Cut", role:"cut"},
+                {label:"Copy", role:"copy"},
+                {label: "Paste", role:"paste"},
+                {label:"Preferences", click() {openPrefWindow()}}
+            ]
         }, {
             label: "View", role: "viewMenu"
         }, {
             label: "Window", role: "windowMenu"
+        }, {
+            label: "Help", submenu: [
+                {label:"Website", click() {shell.openExternal("https://www.vestal.ml")}},
+                {label: "About", click() {openAboutWindow({
+                    icon_path: join(__dirname, 'icon.png'),
+                    description: "Your Open Source Personal Assistant",
+                    homepage: "https://www.vestal.ml",
+                    copyright: "MIT",
+                    show_close_button: "Sounds Good!",
+                    use_version_info: true,
+                    css_path: join(__dirname, "aboutpage_css.css")
+            })}}
+            ]
         }
     ])
     Menu.setApplicationMenu(menu); 
+}
+function openPrefWindow() {
+    prefWindow = new BrowserWindow({
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true,
+            webSecurity: false,
+            spellcheck: true,
+        },
+        icon: "./icon.png"
+    });
+    prefWindow.loadFile("prefs.html");
 }
 contextMenu({
 	prepend: (defaultActions, parameters, browserWindow) => [

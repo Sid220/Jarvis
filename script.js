@@ -1,3 +1,4 @@
+byId('loading-details').innerHTML = 'Loaded the HTML';
 const console = require("console");
 const { lookup } = require("dns");
 
@@ -5,7 +6,9 @@ special = null;
 function byId(laid) {
     return document.getElementById(laid);
 }
+byId('loading-details').innerHTML = 'Loaded the JS';
 window.onload = function () {
+    byId('loading-details').innerHTML = 'Loading the background image';
     getText("https://www.vestal.ml/jarvis-cloud/change.json");
     async function getText(file) {
         let myObject = await fetch(file);
@@ -19,7 +22,7 @@ window.onload = function () {
     form.addEventListener('submit', handleForm);
     byId("maininput").focus();
     const battery = require("battery");
-
+    byId('loading-details').innerHTML = 'Getting battery info';
     (async () => {
         var { level, charging } = await battery();
         console.log(level);
@@ -32,6 +35,7 @@ window.onload = function () {
         elem.style.width = level * 100 + '%';
         elem.innerHTML = elemInnerHTML;
     })();
+    byId('loading-details').innerHTML = 'Getting the time';
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     date = new Date();
@@ -39,6 +43,7 @@ window.onload = function () {
     setInterval(() => {
         window.scrollTo(0, document.querySelector("#container").scrollHeight);
     }, 5);
+    byId('loading-details').innerHTML = 'Getting the volume';
     async function getVolume() {
         const loudness = require('loudness');
 
@@ -110,6 +115,7 @@ window.onload = function () {
             console.log(err)
         });
     });
+    byId('loading-details').innerHTML = 'Checking Version';
     getVer("https://www.vestal.ml/jarvis-cloud/version.json");
     async function getVer(file) {
         let myObject = await fetch(file);
@@ -123,22 +129,29 @@ window.onload = function () {
             byId("message").style.display = "block";
         }
     }
+   byId('cover').remove();
 }
 function send() {
     var filterone = byId("maininput").value.toUpperCase();
-    var filtertwo = filterone.replace("?", "").replace("I'M", "IM");
+    var filtertwo = filterone.replace("?", "").replace("I'M", "IM").replace(" R ", " ARE ").replace(" U ", " YOU ");
     var filterthree = filtertwo.replace(" OF", "");
     var filterfour = filterthree.replace("WHAT'S", "WHATS");
     var filterfive = filterfour.replace("WHAT IS", "WHATS");
     var filtersix = filterfive.replace("COLOR", "COLOUR");
     var filterseven = filtersix.split(" ");
-    if (filterseven[0] == "WHAT") {
+    if (filterseven[0] == "WHAT" || filterseven[0] == "TELL") {
         filterseven.splice(0, 1);
         if (filterseven[0] === "IS") {
             filterseven.splice(0, 1);
         }
         if (filterseven[0] === "THE") {
             filterseven.splice(0, 1);
+        }
+        if (filterseven[0] === "ME") {
+            filterseven.splice(0, 1);
+            if (filterseven[0] === "THE") {
+                filterseven.splice(0, 1);
+            }
         }
     }
     if (filterseven[0] == "WHATS") {
@@ -247,6 +260,12 @@ function send() {
                     "b": "ERROR"
                 }];
             }
+        }
+        if(special == "weather") {
+            found = [{
+                "a": "<iframe id='weather' src='https://www.bing.com/search?q="+ byId(`maininput`).value +"+weather'>Loading...</iframe><br><button class='yesandno w3-border w3-round' onClick='fullscreensomethin(`weather`)'><i class='fa fa-expand'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(this.parentElement.firstChild.src)'><i class='fas fa-external-link-alt'></i></button>",
+                "b": "WEATHER"
+            }]
         }
     }
     else {
@@ -381,6 +400,9 @@ function check() {
         if (byId("maininput").value.toUpperCase() == ("SET A TIMER ") || byId("maininput").value.toUpperCase() == ("TIMER ")) {
             setaTimer();
         }
+        if (byId("maininput").value.toUpperCase() == ("WEATHER ")) {
+            weatherspecial();
+        }
     }
     byId("maininput").addEventListener('keydown', function (e) {
         if (e.key == "Backspace" && byId("maininput").value == "" && special != null) {
@@ -391,27 +413,33 @@ function check() {
         }
     }, false);
 }
+function weatherspecial() {
+    byId("maininput").placeholder = "location";
+    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Weather for | </button>');
+    byId("maininput").value = null;
+    special = "weather";
+}
 function openanapp() {
     byId("maininput").placeholder = "app | command";
-    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="app | command" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Open | </button>');
+    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Open | </button>');
     byId("maininput").value = null;
     special = "open";
 }
 function setaTimer() {
     byId("maininput").placeholder = "x Minute(s) | x Second(s)";
-    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="x Minute(s) | x Second(s)" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Set a timer for | </button>');
+    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Set a timer for | </button>');
     byId("maininput").value = null;
     special = "timer";
 }
 function lookupquery() {
     byId("maininput").placeholder = "query";
-    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="query" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Lookup | </button>');
+    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Lookup | </button>');
     byId("maininput").value = null;
     special = "lookup";
 }
 function defineaWord() {
     byId("maininput").placeholder = "word";
-    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="word" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-round yesandno" id="special">Define | </button>');
+    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Define | </button>');
     byId("maininput").value = null;
     special = "define";
 }
@@ -451,3 +479,7 @@ function makefound(finaltime) {
         "b": "TIMER"
     }];
 }
+setTimeout(function() {
+    if(byId("cover")!=undefined) {
+    byId("loading-details").innerHTML = "If you're still seeing this something probably went wrong... You can open Dev. Tools to look for errors and report any if found, or you can <a href='javascript:byId(`cover`).remove()'>remove</a> this cover"
+}}, 20000);

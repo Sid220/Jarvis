@@ -1,13 +1,15 @@
 {
     "name": "jarvis",
+    "license": "MIT",
     "version": "0.0.1",
     "author": "Vestal",
-    "description": "Your Personal Assistant",
+    "description": "Your Open Source Personal Assistant",
     "main": "main.js",
     "scripts": {
         "start": "electron ."
     },
     "dependencies": {
+        "about-window": "^1.14.0",
         "battery": "^1.0.1",
         "electrolytic": "^0.1.1",
         "electron": "^12.0.9",
