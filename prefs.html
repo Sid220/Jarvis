@@ -58,6 +58,8 @@
     }
   </style>
   <script>
+    const openAboutWindow = require('about-window').default;
+    const join = require('path').join;
     window.onload = function () {
       var fs = require('fs');
       data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
@@ -84,7 +86,7 @@
   <button class="tablink" onclick="openPage('Custom', this, 'white')">Commands</button>
   <button class="tablink" onclick="openPage('Extensions', this, 'white')">Extensions</button>
   <button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
-  <button class="tablink" onclick="openPage('About', this, 'white')">About</button>
+  <button class="tablink" onclick="openAboutWindow({icon_path: join(__dirname, 'icon.png'),description: 'Your Open Source Personal Assistant',homepage: 'https://www.vestal.ml',copyright: 'MIT',show_close_button: 'Sounds Good!',use_version_info: true,css_path: join(__dirname, 'aboutpage_css.css')})">About</button>
 
   <div id="You" class="tabcontent">
     <form id="form-you"
@@ -131,7 +133,10 @@
   </div>
 
   <div id="Bookmarks" class="tabcontent">
-    <p>Bookmarks are the links located in the header and menu of Jarvis</p>
+    Bookmarks are the links located in the header and menu of Jarvis.<br>
+  <ul>
+    <li></li>
+  </ul>
   </div>
 
   <div id="Custom" class="tabcontent">

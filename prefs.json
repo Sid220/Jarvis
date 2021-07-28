@@ -1,1 +1,39 @@
-{"name":"Sidney","last":"Trzepacz","profileext":"svg","uno":false,"bookmarks":[{"url":"weather","name":"weather","icon":"weather"}],"extensions":[null],"background":true,"firstrun":false,"key":"Sidney"}
+{
+    "name": "Sidney",
+    "last": "Trzepacz",
+    "profileext": "svg",
+    "uno": false,
+    "bookmarks": [
+        {
+            "url": "https://www.msn.com/en-us/news",
+            "name": "News",
+            "icon": "FONTAWESOME:far fa-newspaper"
+        },
+        {
+            "url": "https://www.bing.com/maps?FORM=Z9LH2",
+            "name": "Maps",
+            "icon": "FONTAWESOME:fas fa-map-marker-alt"
+        },
+        {
+            "url": "https://www.msn.com/en-us/weather",
+            "name": "Weather",
+            "icon": "FONTAWESOME:fas fa-sun"
+        },
+        {
+            "url": "https://www.msn.com/en-us/money",
+            "name": "Finance",
+            "icon": "FONTAWESOME:fas fa-chart-line"
+        },
+        {
+            "url": "https://www.bing.com/shop?FORM=Z9LHS4",
+            "name": "fas fa-shopping-cart",
+            "icon": "FONTAWESOME:fas fa-chart-line"
+        }
+    ],
+    "extensions": [
+        null
+    ],
+    "background": true,
+    "firstrun": false,
+    "key": "Sidney"
+}
