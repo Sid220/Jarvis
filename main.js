@@ -89,6 +89,7 @@ function openPrefWindow() {
         icon: "./icon.png"
     });
     prefWindow.loadFile("prefs.html");
+    prefWindow.setMenu(null)
 }
 contextMenu({
 	prepend: (defaultActions, parameters, browserWindow) => [

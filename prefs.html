@@ -60,12 +60,67 @@
   <script>
     const openAboutWindow = require('about-window').default;
     const join = require('path').join;
+    function deletes(num) {
+      data.bookmarks[num].name = null;
+      sendData()
+    }
+
     window.onload = function () {
       var fs = require('fs');
       data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
       document.getElementById("name").value = data.name;
       document.getElementById("last").value = data.last;
       document.getElementById("pfp").src = "profile." + data.profileext;
+
+
+      const edit1 = " <a href='editbookmark.html?book=";
+      const edit2 = "' class='w3-text-blue'>[edit]</a> <a href='#' onclick='deletes("
+      const edit3 = ");this.parentElement.innerHTML = `<i>empty</i>`;' class='w3-text-blue'>[delete]</a>";
+
+      if (data.bookmarks[0].icon.includes("FONTAWESOME:") == true) {
+        oneicon = "<i class='" + data.bookmarks[0].icon.split(":")[1] + "'></i>";
+      }
+      else {
+        oneicon = "<img style='width: 40px; height: 40px; border-radius: 50%' src='" + data.bookmarks[0].icon + "'>"
+      }
+      document.getElementById("one").innerHTML = oneicon + " " + data.bookmarks[0].name + " (<a href='" + data.bookmarks[0].url + "'>" + data.bookmarks[0].url + "</a>)" + edit1 + 0 + edit2 + 0 + edit3;
+
+
+      if (data.bookmarks[1].icon.includes("FONTAWESOME:") == true) {
+        twoicon = "<i class='" + data.bookmarks[1].icon.split(":")[1] + "'></i>";
+      }
+      else {
+        twoicon = "<img style='width: 17px; height: 17px; border-radius: 50%' src='" + data.bookmarks[1].icon + "'>"
+      }
+      document.getElementById("two").innerHTML = twoicon + " " + data.bookmarks[1].name + " (<a href='" + data.bookmarks[1].url + "'>" + data.bookmarks[1].url + "</a>)" + edit1 + 1 + edit2 + 1 + edit3;
+
+
+      if (data.bookmarks[2].icon.includes("FONTAWESOME:") == true) {
+        threeicon = "<i class='" + data.bookmarks[2].icon.split(":")[1] + "'></i>";
+      }
+      else {
+        threeicon = "<img style='width: 17px; height: 17px; border-radius: 50%' src='" + data.bookmarks[2].icon + "'>"
+      }
+      document.getElementById("three").innerHTML = threeicon + " " + data.bookmarks[2].name + " (<a href='" + data.bookmarks[2].url + "'>" + data.bookmarks[2].url + "</a>)" + edit1 + 2 + edit2 + 2 + edit3;
+
+
+      if (data.bookmarks[3].icon.includes("FONTAWESOME:") == true) {
+        fouricon = "<i class='" + data.bookmarks[3].icon.split(":")[1] + "'></i>";
+      }
+      else {
+        fouricon = "<img style='width: 17px; height: 17px; border-radius: 50%' src='" + data.bookmarks[3].icon + "'>"
+      }
+      document.getElementById("four").innerHTML = fouricon + " " + data.bookmarks[3].name + " (<a href='" + data.bookmarks[3].url + "'>" + data.bookmarks[3].url + "</a>)" + edit1 + 3 + edit2 + 3 + edit3;
+
+
+      if (data.bookmarks[4].icon.includes("FONTAWESOME:") == true) {
+        fiveicon = "<i class='" + data.bookmarks[4].icon.split(":")[1] + "'></i>";
+      }
+      else {
+        fiveicon = "<img style='width: 17px; height: 17px; border-radius: 50%' src='" + data.bookmarks[4].icon + "'>"
+      }
+      document.getElementById("five").innerHTML = fiveicon + " " + data.bookmarks[4].name + " (<a href='" + data.bookmarks[4].url + "'>" + data.bookmarks[4].url + "</a>)" + edit1 + 4 + edit2 + 4 + edit3;
+
       function handleForm(event) { event.preventDefault(); }
       document.getElementById("form-you").addEventListener('submit', handleForm);
     }
@@ -81,12 +136,13 @@
 
 <body>
 
-  <button class="tablink" onclick="openPage('You', this, 'white')" id="defaultOpen">You</button>
-  <button class="tablink" onclick="openPage('Bookmarks', this, 'white')">Bookmarks</button>
-  <button class="tablink" onclick="openPage('Custom', this, 'white')">Commands</button>
-  <button class="tablink" onclick="openPage('Extensions', this, 'white')">Extensions</button>
-  <button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
-  <button class="tablink" onclick="openAboutWindow({icon_path: join(__dirname, 'icon.png'),description: 'Your Open Source Personal Assistant',homepage: 'https://www.vestal.ml',copyright: 'MIT',show_close_button: 'Sounds Good!',use_version_info: true,css_path: join(__dirname, 'aboutpage_css.css')})">About</button>
+  <button class="tablink" id="you-button" onclick="openPage('You', this, 'white')" id="defaultOpen">You</button>
+  <button class="tablink" id="book-button" onclick="openPage('Bookmarks', this, 'white')">Bookmarks</button>
+  <button class="tablink" id="cmd-button" onclick="openPage('Custom', this, 'white')">Commands</button>
+  <button class="tablink" id="ext-button" onclick="openPage('Extensions', this, 'white')">Extensions</button>
+  <button class="tablink" id="help-button" onclick="openPage('Help', this, 'white')">Help</button>
+  <button class="tablink" id="abt-button"
+    onclick="openAboutWindow({icon_path: join(__dirname, 'icon.png'),description: 'Your Open Source Personal Assistant',homepage: 'https://www.vestal.ml',copyright: 'MIT',show_close_button: 'Sounds Good!',use_version_info: true,css_path: join(__dirname, 'aboutpage_css.css')})">About</button>
 
   <div id="You" class="tabcontent">
     <form id="form-you"
@@ -104,7 +160,7 @@
           return false;
         };
         holder.ondragleave = holder.ondragend = () => {
-          holder.innerHTML = "Profile:<img ondragstart='return false;' style='width: 40px; height: 40px; border-radius: 50%' src='profile."+ data.profileext +"'>(Drag an image to upload)";
+          holder.innerHTML = "Profile:<img ondragstart='return false;' style='width: 40px; height: 40px; border-radius: 50%' src='profile." + data.profileext + "'>(Drag an image to upload)";
           return false;
         };
         holder.ondrop = (e) => {
@@ -112,17 +168,17 @@
           for (let f of e.dataTransfer.files) {
             var fs = require('fs');
             const lastDot = f.path.lastIndexOf('.');
-            fs.copyFile(f.path, "profile."+ f.path.substring(lastDot+1) +"", (err) => {
+            fs.copyFile(f.path, "profile." + f.path.substring(lastDot + 1) + "", (err) => {
               if (err) throw err;
               console.log('Copied!');
             })
             console.log('File(s) you dragged here: ', f.path);
-            holder.innerHTML = "Profile:<img ondragstart='return false;' style='width: 40px; height: 40px; border-radius: 50%' src='profile."+ f.path.substring(lastDot+1) +"?"+ new Date().getTime() +"'>(Drag an image to upload)"
-          data.profileext = f.path.substring(lastDot+1);
-          sendData();
-          return false;
+            holder.innerHTML = "Profile:<img ondragstart='return false;' style='width: 40px; height: 40px; border-radius: 50%' src='profile." + f.path.substring(lastDot + 1) + "?" + new Date().getTime() + "'>(Drag an image to upload)"
+            data.profileext = f.path.substring(lastDot + 1);
+            sendData();
+            return false;
+          }
         }
-      }
       </script>
       <input required id="name" class="w3-input" type="text"
         oninput="document.getElementById('change-you').disabled = ''" placeholder="First Name"><br>
@@ -134,9 +190,13 @@
 
   <div id="Bookmarks" class="tabcontent">
     Bookmarks are the links located in the header and menu of Jarvis.<br>
-  <ul>
-    <li></li>
-  </ul>
+    <ul>
+      <li id="one"><i>empty</i></li>
+      <li id="two"><i>empty</i></li>
+      <li id="three"><i>empty</i></li>
+      <li id="four"><i>empty</i></li>
+      <li id="five"><i>empty</i></li>
+    </ul>
   </div>
 
   <div id="Custom" class="tabcontent">
@@ -180,7 +240,15 @@
     }
 
     // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    book = urlParams.get("tab");
+    if (book != undefined) {
+      document.getElementById(book).click();
+    }
+    else {
+      document.getElementById("you-button").click();
+    }
   </script>
 
 </body>

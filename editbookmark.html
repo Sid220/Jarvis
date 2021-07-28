@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="vivify.min.css">
+    <meta charset="UTF-8">
+    <title>Jarvis | Edit Bookmark</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        /* Set height of body and the document to 100% */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+        }
+
+        /* Style tab links */
+        .tablink {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 16.666666666%;
+        }
+
+        .tablink:hover {
+            background-color: rgb(65, 65, 65);
+        }
+
+        /* Style the tab content (and add height:100% for full page content) */
+        .tabcontent {
+            color: rgb(0, 0, 0);
+            display: none;
+            padding: 100px 20px;
+            height: 100%;
+        }
+
+        input[type=text]:focus {
+            border-bottom: 3.5px solid rgb(53, 53, 53);
+            transition: 600ms;
+        }
+
+        input:focus,
+        button:focus {
+            outline: none;
+        }
+    </style>
+    <script>
+        const openAboutWindow = require('about-window').default;
+        const join = require('path').join;
+        window.onload = function () {
+            var fs = require('fs');
+            data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            book = urlParams.get("book");
+            if (book == undefined) {
+                self.close()
+            }
+            document.getElementById("name").value = data.bookmarks[book].name;
+            document.getElementById("icon").value = data.bookmarks[book].icon;
+            if (data.bookmarks[book].icon.includes("FONTAWESOME:") == true) {
+                document.getElementById("iconfont").className = data.bookmarks[book].icon.split(":")[1]
+            }
+            else {
+                document.getElementById("iconimage").style.display = "block";
+                document.getElementById("iconimage").src = data.bookmarks[book].icon;
+            }
+            document.getElementById("url").value = data.bookmarks[book].url;
+            function handleForm(event) { event.preventDefault(); }
+            document.getElementById("form").addEventListener('submit', handleForm);
+        }
+        function sendData() {
+            var fs = require('fs');
+            data.bookmarks[book].name = document.getElementById("name").value;
+            data.bookmarks[book].icon = document.getElementById("icon").value;
+            data.bookmarks[book].url = document.getElementById("url").value;
+            fs.writeFile("prefs.json", JSON.stringify(data), function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+                window.location = 'prefs.html?tab=book-button'
+            });
+        }
+        function check(elem) {
+            if (elem.includes("FONTAWESOME:") == true) {
+                document.getElementById("iconimage").style.display = "none";
+                document.getElementById("iconfont").className = elem.split(":")[1];
+            }
+            else {
+                document.getElementById("iconfont").className = "";
+                document.getElementById("iconimage").style.display = "block";
+                document.getElementById("iconimage").src = elem;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="w3-container">
+        <form id="form" onsubmit="sendData()"><br>
+            Name: <input required id="name" class="w3-input" type="text"
+                oninput="document.getElementById('change-you').disabled = '';" placeholder="Name"><br>
+            Icon: <img onerror="this.src = 'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061132_960_720.png'" style='display: none; width: 20px; height: 20px; border-radius: 50%'
+                src="" id="iconimage"><i id="iconfont"></i>
+            <input required id="icon" class="w3-input" type="text"
+                oninput="document.getElementById('change-you').disabled = '';check(this.value)"
+                placeholder="Icon (for fontawesome icon write: FONTAWESOME:icon-code)"><br>
+            URL: <input required id="url" class="w3-input" type="text"
+                oninput="document.getElementById('change-you').disabled = '';"
+                placeholder="URL (Include http:/https:)"><br>
+            <button type="submit" id="change-you" class="w3-round w3-border w3-button" disabled>Change</button> <button
+                type="button" onclick="window.location = 'prefs.html?tab=book-button'"
+                class="w3-round w3-border w3-button">Cancel</button>
+        </form>
+    </div>
+</body>
+
+</html>

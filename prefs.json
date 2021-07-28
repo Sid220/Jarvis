@@ -26,8 +26,8 @@
         },
         {
             "url": "https://www.bing.com/shop?FORM=Z9LHS4",
-            "name": "fas fa-shopping-cart",
-            "icon": "FONTAWESOME:fas fa-chart-line"
+            "name": "Shopping",
+            "icon": "FONTAWESOME:fas fa-shopping-cart"
         }
     ],
     "extensions": [
