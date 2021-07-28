@@ -1,73 +1,150 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link rel="stylesheet" href="vivify.min.css">
+  <meta charset="UTF-8">
+  <title>Jarvis | Preferences</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    * {
+      box-sizing: border-box
+    }
 
-/* Set height of body and the document to 100% */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial;
-}
+    /* Set height of body and the document to 100% */
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial;
+    }
 
-/* Style tab links */
-.tablink {
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 16.666666666%;
-}
+    /* Style tab links */
+    .tablink {
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 16.666666666%;
+    }
 
-.tablink:hover {
-  background-color: rgb(65, 65, 65);
-}
+    .tablink:hover {
+      background-color: rgb(65, 65, 65);
+    }
 
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: rgb(0, 0, 0);
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
-}
-</style>
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+      color: rgb(0, 0, 0);
+      display: none;
+      padding: 100px 20px;
+      height: 100%;
+    }
+
+    input[type=text]:focus {
+      border-bottom: 3.5px solid rgb(53, 53, 53);
+      transition: 600ms;
+    }
+
+    input:focus,
+    button:focus {
+      outline: none;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var fs = require('fs');
+      data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
+      document.getElementById("name").value = data.name;
+      document.getElementById("last").value = data.last;
+      document.getElementById("pfp").src = "profile." + data.profileext;
+      function handleForm(event) { event.preventDefault(); }
+      document.getElementById("form-you").addEventListener('submit', handleForm);
+    }
+    function sendData() {
+      var fs = require('fs');
+      fs.writeFile("prefs.json", JSON.stringify(data), function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+      });
+    }
+  </script>
 </head>
+
 <body>
 
-<button class="tablink" onclick="openPage('You', this, 'white')" id="defaultOpen">You</button>
-<button class="tablink" onclick="openPage('Bookmarks', this, 'white')">Bookmarks</button>
-<button class="tablink" onclick="openPage('Custom', this, 'white')">Commands</button>
-<button class="tablink" onclick="openPage('Extensions', this, 'white')">Extensions</button>
-<button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
-<button class="tablink" onclick="openPage('About', this, 'white')">About</button>
+  <button class="tablink" onclick="openPage('You', this, 'white')" id="defaultOpen">You</button>
+  <button class="tablink" onclick="openPage('Bookmarks', this, 'white')">Bookmarks</button>
+  <button class="tablink" onclick="openPage('Custom', this, 'white')">Commands</button>
+  <button class="tablink" onclick="openPage('Extensions', this, 'white')">Extensions</button>
+  <button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
+  <button class="tablink" onclick="openPage('About', this, 'white')">About</button>
 
-<div id="You" class="tabcontent">
-  <h3>Home</h3>
-  <p>Home is where the heart is..</p>
-</div>
+  <div id="You" class="tabcontent">
+    <form id="form-you"
+      onsubmit="data.name = document.getElementById('name').value;data.last = document.getElementById('last').value;sendData();document.getElementById('change-you').disabled = 'true'">
+      <div id="holder">
+        Profile:
+        <img ondragstart="return false;" style='width: 40px; height: 40px; border-radius: 50%' id="pfp">
+        (Drag an image to upload)
+      </div>
 
-<div id="Bookmarks" class="tabcontent">
-  <h3>News</h3>
-  <p>Some news this fine day!</p> 
-</div>
+      <script>
+        const holder = document.getElementById('holder');
+        holder.ondragover = () => {
+          holder.innerHTML = "Drag your <b><u>IMAGE</u></b> here";
+          return false;
+        };
+        holder.ondragleave = holder.ondragend = () => {
+          holder.innerHTML = "Profile:<img ondragstart='return false;' style='width: 40px; height: 40px; border-radius: 50%' src='profile."+ data.profileext +"'>(Drag an image to upload)";
+          return false;
+        };
+        holder.ondrop = (e) => {
+          e.preventDefault();
+          for (let f of e.dataTransfer.files) {
+            var fs = require('fs');
+            const lastDot = f.path.lastIndexOf('.');
+            fs.copyFile(f.path, "profile."+ f.path.substring(lastDot+1) +"", (err) => {
+              if (err) throw err;
+              console.log('Copied!');
+            })
+            console.log('File(s) you dragged here: ', f.path);
+            holder.innerHTML = "Profile:<img ondragstart='return false;' style='width: 40px; height: 40px; border-radius: 50%' src='profile."+ f.path.substring(lastDot+1) +"?"+ new Date().getTime() +"'>(Drag an image to upload)"
+          data.profileext = f.path.substring(lastDot+1);
+          sendData();
+          return false;
+        }
+      }
+      </script>
+      <input required id="name" class="w3-input" type="text"
+        oninput="document.getElementById('change-you').disabled = ''" placeholder="First Name"><br>
+      <input id="last" class="w3-input" type="text" oninput="document.getElementById('change-you').disabled = ''"
+        placeholder="Last Name"><br>
+      <button type="submit" id="change-you" class="w3-round w3-border w3-button" disabled>Change</button>
+    </form>
+  </div>
 
-<div id="Custom" class="tabcontent">
-  <h3>Contact</h3>
-  <p>Get in touch, or swing by for a cup of coffee.</p>
-</div>
+  <div id="Bookmarks" class="tabcontent">
+    <p>Bookmarks are the links located in the header and menu of Jarvis</p>
+  </div>
 
-<div id="Extensions" class="tabcontent">
-  <h3>About</h3>
-  <p>Who we are and what we do.</p>
-</div>
+  <div id="Custom" class="tabcontent">
+    <h3>Contact</h3>
+    <p>Get in touch, or swing by for a cup of coffee.</p>
+  </div>
 
-<div id="Help" class="tabcontent">
+  <div id="Extensions" class="tabcontent">
+    <h3>About</h3>
+    <p>Who we are and what we do.</p>
+  </div>
+
+  <div id="Help" class="tabcontent">
     <h3>About</h3>
     <p>Who we are and what we do.</p>
   </div>
@@ -76,30 +153,31 @@ body, html {
     <h3>About</h3>
     <p>Who we are and what we do.</p>
   </div>
-<script>
-function openPage(pageName,elmnt,color) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
-  var x = document.getElementsByClassName("tablink");
-var i;
-for (i = 0; i < x.length; i++) {
-  x[i].style.color = "white";
-}
-  elmnt.style.color = "black";
-}
+  <script>
+    function openPage(pageName, elmnt, color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
+      var x = document.getElementsByClassName("tablink");
+      var i;
+      for (i = 0; i < x.length; i++) {
+        x[i].style.color = "white";
+      }
+      elmnt.style.color = "black";
+    }
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-   
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+
 </body>
-</html> 
+
+</html>

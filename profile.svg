@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://greentree.cf">
+  <circle style="fill: rgb(180, 180, 180);" cx="250" cy="250" r="226.811"/>
+  <circle style="fill: rgb(91, 91, 91);" cx="250" cy="181.281" r="68.51"/>
+  <path style="fill: rgb(91, 91, 91);" transform="matrix(0, 0.500827, -0.446504, 0, 488.433136, 240.987564)" d="M 292 838.015 A 304.015 304.015 0 1 1 292 229.985 L 292 534 Z" bx:shape="pie 292 534 0 304.015 180 360 1@f1ab6dd2"/>
+</svg>
