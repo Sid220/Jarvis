@@ -1,51 +1,51 @@
 {
-    "name": "Sidney",
-    "last": "Trzepacz",
-    "profileext": "svg",
-    "uno": false,
-    "unousername": null,
-    "bookmarks": [
-        {
-            "url": "https://www.msn.com/en-us/news",
-            "name": "News",
-            "icon": "FONTAWESOME:far fa-newspaper"
-        },
-        {
-            "url": "https://www.google.com",
-            "name": "Google",
-            "icon": "https://www.google.com/favicon.ico"
-        },
-        {
-            "url": "https://www.msn.com/en-us/weather",
-            "name": "Weather",
-            "icon": "FONTAWESOME:fas fa-sun"
-        },
-        {
-            "url": "https://www.vestal.ml/nextcloud",
-            "name": "Nextcloud",
-            "icon": "https://cdn.iconscout.com/icon/free/png-512/nextcloud-2752119-2284936.png"
-        },
-        {
-            "url": null,
-            "name": null,
-            "icon": null
-        }
-    ],
-    "bookloc": "other",
-    "openinnewwindow": false,
-    "extensions": [
+  "name": "Sidney",
+  "last": "Trzepacz",
+  "profileext": "svg",
+  "uno": false,
+  "unousername": null,
+  "bookmarks": [
     {
-            "name": "run in terminal",
-            "ID": 1,
-            "version": "0.0.1",
-            "details": "Extension that allows you to run commands in your terminal",
-            "func": "runInTerminal()",
-            "special": "RUN",
-            "req": "command | app",
-            "title": "Run in terminal"
-        }
-    ],
-    "background": true,
-    "firstrun": false,
-    "key": "Sidney"
+      "url": "https://www.msn.com/en-us/news",
+      "name": "News",
+      "icon": "FONTAWESOME:far fa-newspaper"
+    },
+    {
+      "url": "https://www.google.com",
+      "name": "Google",
+      "icon": "https://www.google.com/favicon.ico"
+    },
+    {
+      "url": "https://www.msn.com/en-us/weather",
+      "name": "Weather",
+      "icon": "FONTAWESOME:fas fa-sun"
+    },
+    {
+      "url": "https://www.vestal.ml/nextcloud",
+      "name": "Nextcloud",
+      "icon": "https://cdn.iconscout.com/icon/free/png-512/nextcloud-2752119-2284936.png"
+    },
+    {
+      "url": null,
+      "name": null,
+      "icon": null
+    }
+  ],
+  "bookloc": "other",
+  "openinnewwindow": false,
+  "extensions": [
+    {
+      "name": "run in terminal",
+      "ID": 1,
+      "version": "0.0.1",
+      "details": "Extension that allows you to run commands in your terminal",
+      "func": "runInTerminal()",
+      "special": "RUN",
+      "req": "command | app",
+      "title": "Run in terminal"
+    }
+  ],
+  "background": true,
+  "firstrun": false,
+  "key": "Sidney"
 }
