@@ -39,16 +39,6 @@ function createWindow() {
                 {label:'Quit', role: "quit"}
             ]
         },{
-            label: 'Location',
-            submenu: [
-                {label:'Home', id:"home" ,checked:true, type: "checkbox",click() {mainWindow.loadFile("index.html");menu.getMenuItemById("home").checked = true;menu.getMenuItemById("news").checked = false;menu.getMenuItemById("map").checked = false;menu.getMenuItemById("weather").checked = false;menu.getMenuItemById("money").checked = false;menu.getMenuItemById("shop").checked = false}},
-                {label:'News', id:"news", type: "checkbox",click() {mainWindow.loadURL("https://www.msn.com/en-us/news");menu.getMenuItemById("news").checked = true;menu.getMenuItemById("home").checked = false;menu.getMenuItemById("map").checked = false;menu.getMenuItemById("weather").checked = false;menu.getMenuItemById("money").checked = false;menu.getMenuItemById("shop").checked = false}},
-                {label:'Maps', id:"map", type: "checkbox",click() {mainWindow.loadURL("https://www.bing.com/maps?FORM=Z9LH2");menu.getMenuItemById("map").checked = true;menu.getMenuItemById("home").checked = false;menu.getMenuItemById("news").checked = false;menu.getMenuItemById("weather").checked = false;menu.getMenuItemById("money").checked = false;menu.getMenuItemById("shop").checked = false}},
-                {label:'Weather', id:"weather", type: "checkbox",click() {mainWindow.loadURL("https://www.msn.com/en-us/weather");menu.getMenuItemById("weather").checked = true;menu.getMenuItemById("home").checked = false;menu.getMenuItemById("map").checked = false;menu.getMenuItemById("news").checked = false;menu.getMenuItemById("money").checked = false;menu.getMenuItemById("shop").checked = false}},
-                {label:'Finance', id:"money", type: "checkbox",click() {mainWindow.loadURL("https://www.msn.com/en-us/money");menu.getMenuItemById("money").checked = true;menu.getMenuItemById("home").checked = false;menu.getMenuItemById("map").checked = false;menu.getMenuItemById("weather").checked = false;menu.getMenuItemById("news").checked = false;menu.getMenuItemById("shop").checked = false}},
-                {label:'Shopping', id:"shop", type: "checkbox",click() {mainWindow.loadURL("https://www.bing.com/shop?FORM=Z9LHS4");menu.getMenuItemById("shop").checked = true;menu.getMenuItemById("home").checked = false;menu.getMenuItemById("map").checked = false;menu.getMenuItemById("weather").checked = false;menu.getMenuItemById("money").checked = false;menu.getMenuItemById("news").checked = false}}
-            ]
-        }, {
             label: "Edit", role: "editMenu",
             submenu: [
                 {label:"Cut", role:"cut"},

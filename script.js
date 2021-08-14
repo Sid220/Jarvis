@@ -1,15 +1,95 @@
 byId('loading-details').innerHTML = 'Loaded the HTML';
-const console = require("console");
 const { lookup } = require("dns");
-
+const { from } = require("responselike");
+console.warn("%cWARNING:\n%c\"Give us a break!\"\n%cDO NOT:%cCopy and paste code you don't understand!!!\nThis can mess up your installation, OR EVEN YOUR COMPUTER!%c\"Don't do it!\"%c\n\nAny GitHub issues created by idiots who copied and pasted code will be ignored! Have Fun!", "font-size: 100px; color: red;", "color:black;font-size:45px", "text-decoration: underline;font-weight: bold;color:black;font-size:30px", "color:black;font-size:30px","font-size:45px;color:black", "color:black;");
 special = null;
 function byId(laid) {
     return document.getElementById(laid);
 }
 byId('loading-details').innerHTML = 'Loaded the JS';
-window.onload = function () {
+window.onload = function () {    
     byId('loading-details').innerHTML = 'Loading the background image';
     getText("https://www.vestal.ml/jarvis-cloud/change.json");
+
+    var fs = require('fs');
+    prefs = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
+
+        // Load extensions
+    for (let i = 0; i < prefs.extensions.length; i++) { 
+            var script = document.createElement("script");  // create a script DOM node
+            script.src = "./exts/" + prefs.extensions[i].name + "/jarvis-main.js";  // set its src to the provided URL
+        
+            document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+        }
+
+    booklocvar = prefs.bookloc;
+    function bookloc(booklocvars, url) {
+        if(booklocvars == "self") {
+            window.location.href = url;
+        }
+        if(booklocvars == "browser") {
+            openinbrowser(url)
+        }
+        else {
+            window.open(url, "_blank");
+        }
+    }
+    if (prefs.bookmarks[0].name != null) {
+        if (prefs.bookmarks[0].icon.includes("FONTAWESOME:") == true) {
+          oneicon = "<i class='" + prefs.bookmarks[0].icon.split(":")[1] + "'></i>";
+        }
+        else {
+          oneicon = "<img style='width: 15px; height: 15px; border-radius: 50%' src='" + prefs.bookmarks[0].icon + "'>"
+        }
+        document.getElementById("book-one").innerHTML = oneicon + " " + prefs.bookmarks[0].name;
+        document.getElementById("book-one").title = prefs.bookmarks[0].name;
+        document.getElementById("book-one").addEventListener('click', function() {bookloc(booklocvar, prefs.bookmarks[0].url)})
+      }
+    if (prefs.bookmarks[1].name != null) {
+        if (prefs.bookmarks[1].icon.includes("FONTAWESOME:") == true) {
+          oneicon = "<i class='" + prefs.bookmarks[1].icon.split(":")[1] + "'></i>";
+        }
+        else {
+          oneicon = "<img style='width: 15px; height: 15px; border-radius: 50%' src='" + prefs.bookmarks[1].icon + "'>"
+        }
+        document.getElementById("book-two").innerHTML = oneicon + " " + prefs.bookmarks[1].name;
+        document.getElementById("book-two").title = prefs.bookmarks[1].name;
+       document.getElementById("book-two").addEventListener('click', function() {bookloc(booklocvar, prefs.bookmarks[1].url)})
+      }
+      if (prefs.bookmarks[2].name != null) {
+        if (prefs.bookmarks[2].icon.includes("FONTAWESOME:") == true) {
+          oneicon = "<i class='" + prefs.bookmarks[2].icon.split(":")[1] + "'></i>";
+        }
+        else {
+          oneicon = "<img style='width: 15px; height: 15px; border-radius: 50%' src='" + prefs.bookmarks[2].icon + "'>"
+        }
+        document.getElementById("book-three").innerHTML = oneicon + " " + prefs.bookmarks[2].name;
+        document.getElementById("book-three").title = prefs.bookmarks[2].name;
+        document.getElementById("book-three").addEventListener('click', function() {bookloc(booklocvar, prefs.bookmarks[2].url)})
+      }
+      if (prefs.bookmarks[3].name != null) {
+        if (prefs.bookmarks[3].icon.includes("FONTAWESOME:") == true) {
+          oneicon = "<i class='" + prefs.bookmarks[3].icon.split(":")[1] + "'></i>";
+        }
+        else {
+          oneicon = "<img style='width: 15px; height: 15px; border-radius: 50%' src='" + prefs.bookmarks[3].icon + "'>"
+        }
+        document.getElementById("book-four").innerHTML = oneicon + " " + prefs.bookmarks[3].name;
+        document.getElementById("book-four").title = prefs.bookmarks[3].name;
+document.getElementById("book-four").addEventListener('click', function() {bookloc(booklocvar, prefs.bookmarks[3].url)})
+      }
+      if (prefs.bookmarks[4].name != null) {
+        if (prefs.bookmarks[4].icon.includes("FONTAWESOME:") == true) {
+          oneicon = "<i class='" + prefs.bookmarks[4].icon.split(":")[1] + "'></i>";
+        }
+        else {
+          oneicon = "<img style='width: 15px; height: 15px; border-radius: 50%' src='" + prefs.bookmarks[4].icon + "'>"
+        }
+        document.getElementById("book-five").innerHTML = oneicon + " " + prefs.bookmarks[4].name;
+        document.getElementById("book-five").title = prefs.bookmarks[4].name;
+        document.getElementById("book-five").addEventListener('click', function() {bookloc(booklocvar, prefs.bookmarks[4].url)})
+        }
+
     async function getText(file) {
         let myObject = await fetch(file);
         let myText = await myObject.text();
@@ -267,6 +347,12 @@ function send() {
                 "b": "WEATHER"
             }]
         }
+        for (let i = 0; i < prefs.extensions.length; i++) { 
+            if(special == prefs.extensions[i].name) {
+                evalFunc = new Function(prefs.extensions[i].func);
+                evalFunc();
+            }
+            }
     }
     else {
         specialBoolean = 0;
@@ -388,20 +474,28 @@ function fullscreensomethin(id) {
 }
 function check() {
     if (byId('form').firstChild.id != "special") {
-        if (byId("maininput").value.toUpperCase() == ("DEFINE ")) {
+        if (byId("maininput").value.toUpperCase() == "DEFINE ") {
             defineaWord();
         }
-        if (byId("maininput").value.toUpperCase() == ("LOOKUP ")) {
+        if (byId("maininput").value.toUpperCase() == "LOOKUP ") {
             lookupquery();
         }
-        if (byId("maininput").value.toUpperCase() == ("OPEN ")) {
+        if (byId("maininput").value.toUpperCase() == "OPEN ") {
             openanapp();
         }
-        if (byId("maininput").value.toUpperCase() == ("SET A TIMER ") || byId("maininput").value.toUpperCase() == ("TIMER ")) {
+        if (byId("maininput").value.toUpperCase() == "SET A TIMER " || byId("maininput").value.toUpperCase() == "TIMER ") {
             setaTimer();
         }
-        if (byId("maininput").value.toUpperCase() == ("WEATHER ")) {
+        if (byId("maininput").value.toUpperCase() == "WEATHER ") {
             weatherspecial();
+        }
+        for (let i = 0; i < prefs.extensions.length; i++) { 
+        if(byId("maininput").value.toUpperCase() == prefs.extensions[i].special + " ") {
+            byId("maininput").placeholder = prefs.extensions[i].req;
+            byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">'+ prefs.extensions[i].title +' | </button>');
+            byId("maininput").value = null;
+            special = prefs.extensions[i].name;
+        }
         }
     }
     byId("maininput").addEventListener('keydown', function (e) {
@@ -414,34 +508,52 @@ function check() {
     }, false);
 }
 function weatherspecial() {
+    if (byId('form').firstChild.id != "special") {
     byId("maininput").placeholder = "location";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Weather for | </button>');
     byId("maininput").value = null;
     special = "weather";
+    }
 }
 function openanapp() {
+    if (byId('form').firstChild.id != "special") {
     byId("maininput").placeholder = "app | command";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Open | </button>');
     byId("maininput").value = null;
     special = "open";
+    }
 }
 function setaTimer() {
+    if (byId('form').firstChild.id != "special") {
     byId("maininput").placeholder = "x Minute(s) | x Second(s)";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Set a timer for | </button>');
     byId("maininput").value = null;
     special = "timer";
+    }
 }
 function lookupquery() {
+    if (byId('form').firstChild.id != "special") {
     byId("maininput").placeholder = "query";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Lookup | </button>');
     byId("maininput").value = null;
     special = "lookup";
+    }
 }
 function defineaWord() {
+    if (byId('form').firstChild.id != "special") {
     byId("maininput").placeholder = "word";
     byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Define | </button>');
     byId("maininput").value = null;
     special = "define";
+    }
+}
+function runinterminalspecial() {
+    if (byId('form').firstChild.id != "special") {
+        byId("maininput").placeholder = "word";
+        byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">Define | </button>');
+        byId("maininput").value = null;
+        special = "define";
+    }
 }
 function openapp(app) {
     const exec = require('child_process').exec;

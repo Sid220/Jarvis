@@ -23,6 +23,7 @@
     <meta charset="UTF-8">
     <title>Jarvis, your personal assistant</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="extensions.js"></script>
     <script src="script.js"></script>
 </head>
 
@@ -33,52 +34,11 @@
                 onclick="window.open('about.html', '_blank', 'nodeIntegration=true, height=500, width=500, frame=false, resizable=false',)"
                 class="fas fa-info link"></i> | <span style="width: fit-content;" title="Home" class="link"><u><i
                         class="fas fa-home"></i> Home</u> </span>
-            <span style="width: fit-content;" title="News" class="link"
-                onclick="window.location = 'https://www.msn.com/en-us/news'; const {remote} = require('electron')
-                const {Menu} = remote
-       
-                const menu = Menu.getApplicationMenu();
-       
-                menu.getMenuItemById('home').checked = false;
-                menu.getMenuItemById('news').checked = true;"><i
-                    class="far fa-newspaper"></i> News</span>
-            <span style="width: fit-content;" title="Maps" class="link"
-                onclick="window.location = 'https://www.bing.com/maps?FORM=Z9LH2'; const {remote} = require('electron')
-                const {Menu} = remote
-       
-                const menu = Menu.getApplicationMenu();
-       
-                menu.getMenuItemById('home').checked = false;
-                menu.getMenuItemById('map').checked = true;"><i class="fas fa-map-marker-alt"></i>
-                Maps </span><span
-                onclick="window.location = 'https://www.msn.com/en-us/weather';
-                const {remote} = require('electron')
-                const {Menu} = remote
-       
-                const menu = Menu.getApplicationMenu();
-       
-                menu.getMenuItemById('home').checked = false;
-                menu.getMenuItemById('weather').checked = true;"
-                style="width: fit-content;" title="Weather" class="link"><i class="fas fa-sun"></i>
-                Weather </span><span
-                onclick="window.location = 'https://www.msn.com/en-us/money';
-                const {remote} = require('electron')
-                const {Menu} = remote
-       
-                const menu = Menu.getApplicationMenu();
-       
-                menu.getMenuItemById('home').checked = false;
-                menu.getMenuItemById('money').checked = true;"
-                style="width: fit-content;" title="Money" class="link"><i class="fas fa-chart-line"></i>
-                Finance </span><span onclick="window.location = 'https://www.bing.com/shop?FORM=Z9LHS4';
-                const {remote} = require('electron')
-                const {Menu} = remote
-       
-                const menu = Menu.getApplicationMenu();
-       
-                menu.getMenuItemById('home').checked = false;
-                menu.getMenuItemById('shop').checked = true;"
-                style="width: fit-content;" title="Shopping" class="link"><i class="fas fa-shopping-cart"></i> Shopping
+            <span style="width: fit-content;" id="book-one" class="link"></span>
+            <span style="width: fit-content;" id="book-two" class="link"></span>
+            <span style="width: fit-content;" id="book-three" class="link"></span>
+            <span style="width: fit-content;" id="book-four" class="link"></span>
+            <span style="width: fit-content;" id="book-five" class="link"></span>
         </div>
         <div style="color:white; padding: 0; width: 32%; display: inline-block; background-color: black;" id="time">Loading...</div>
         <div style="display: inline-block; width: 20%;height: 100%; margin-top: 0;" class="w3-round w3-light-grey">

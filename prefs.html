@@ -32,7 +32,7 @@
       cursor: pointer;
       padding: 14px 16px;
       font-size: 17px;
-      width: 16.666666666%;
+      width: 20%;
     }
 
     .tablink:hover {
@@ -62,39 +62,46 @@
     const join = require('path').join;
     function deletes(num) {
       rusure = confirm("Are you sure you want to delete this bookmark?");
-      if(rusure == true) {
-      data.bookmarks[num].name = null;
-      data.bookmarks[num].icon = null;
-      data.bookmarks[num].url = null;
-      sendData();
-      switch(num) {
-        case 0:
-        r = "one";
-        break;
-        case 1:
-        r = "two";
-        break;
-        case 2:
-        r = "three";
-        break;
-        case 3:
-        r = "four";
-        break;
-        case 4:
-        r = "five";
-        break;
-        default:
-        r = "error";
-        break;
-      }
-      console.log(r);
-      document.getElementById(r).innerHTML = "<i>empty</i> <a href='editbookmark.html?book="+ num +"' class='w3-text-blue'>[edit]</a>";
+      if (rusure == true) {
+        data.bookmarks[num].name = null;
+        data.bookmarks[num].icon = null;
+        data.bookmarks[num].url = null;
+        sendData();
+        switch (num) {
+          case 0:
+            r = "one";
+            break;
+          case 1:
+            r = "two";
+            break;
+          case 2:
+            r = "three";
+            break;
+          case 3:
+            r = "four";
+            break;
+          case 4:
+            r = "five";
+            break;
+          default:
+            r = "error";
+            break;
+        }
+        console.log(r);
+        document.getElementById(r).innerHTML = "<i>empty</i> <a href='editbookmark.html?book=" + num + "' class='w3-text-blue'>[edit]</a>";
       }
       else {
         window.location = "prefs.html?tab=book-button";
       }
     }
-
+    function openuninstall(elem) {
+      if(elem.parentElement.parentElement.firstChild.innerHTML == "core"){
+        alert("This extension is required for Jarvis to work properly.");
+      }
+      else {
+        alert("Union")
+      }
+    }
     window.onload = function () {
       var fs = require('fs');
       data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
@@ -102,6 +109,15 @@
       document.getElementById("last").value = data.last;
       document.getElementById("pfp").src = "profile." + data.profileext;
 
+      document.getElementById("bookloc").value = data.bookloc;
+      i = data.extensions.length;
+      while(i != 0) {
+        var tr = document.createElement("TR");
+        tr.innerHTML = "<td>"+ data.extensions[i-1].name +"</td><td>"+ data.extensions[i-1].ID +"</td><td>"+ data.extensions[i-1].version +"</td><td>"+ data.extensions[i-1].details +"</td><td><button onclick='openuninstall(this)' class='w3-round w3-border w3-button'>Go</button></td><td><button class='w3-round w3-border w3-button'>Go!</button><td>";
+        document.getElementById("ext-installed").appendChild(tr);
+        i -= 1;
+      }
+      //document.getElementById("ext-installed")
 
       const edit1 = " <a href='editbookmark.html?book=";
       const edit2 = "' class='w3-text-blue'>[edit]</a> <a href='#' onclick='deletes("
@@ -173,7 +189,6 @@
 
   <button class="tablink" id="you-button" onclick="openPage('You', this, 'white')" id="defaultOpen">You</button>
   <button class="tablink" id="book-button" onclick="openPage('Bookmarks', this, 'white')">Bookmarks</button>
-  <button class="tablink" id="cmd-button" onclick="openPage('Custom', this, 'white')">Commands</button>
   <button class="tablink" id="ext-button" onclick="openPage('Extensions', this, 'white')">Extensions</button>
   <button class="tablink" id="help-button" onclick="openPage('Help', this, 'white')">Help</button>
   <button class="tablink" id="abt-button"
@@ -225,6 +240,12 @@
 
   <div id="Bookmarks" class="tabcontent">
     Bookmarks are the links located in the header and menu of Jarvis.<br>
+    Open bookmarks in: <select id="bookloc" oninput="data.bookloc = this.value; sendData()" style="outline: none;"
+      class="w3-button">
+      <option class="w3-button" value="other">Different window</option>
+      <option class="w3-button" value="self">Same window</option>
+      <option class="w3-button" value="browser">Browser</option>
+    </select><br>
     <ul>
       <li id="one"><i>empty</i> <a href='editbookmark.html?book=0' class='w3-text-blue'>[edit]</a></li>
       <li id="two"><i>empty</i> <a href='editbookmark.html?book=1' class='w3-text-blue'>[edit]</a></li>
@@ -234,14 +255,24 @@
     </ul>
   </div>
 
-  <div id="Custom" class="tabcontent">
-    <h3>Contact</h3>
-    <p>Get in touch, or swing by for a cup of coffee.</p>
-  </div>
-
   <div id="Extensions" class="tabcontent">
-    <h3>About</h3>
-    <p>Who we are and what we do.</p>
+    Unfortunately, Jarvis does not have extensive extension abilities (Yet!), but some extensions are still available. View them all here:<br>
+    <h4>Install a new extension</h4>
+    <div style="display: none;"></div>
+    <input class="w3-input" id="ext-id" oninput="document.getElementById('change-ext').disabled = false" type="text" placeholder="Extension ID"><br><button type="submit" id="change-ext" class="w3-round w3-border w3-button" disabled>Install</button>
+    <h4>Installed Extensions</h4>
+    <table id="ext-installed" class="w3-table w3-bordered">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Version</th>
+          <th>Details</th>
+          <th>Uninstall</th>
+          <th>Update</th>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div id="Help" class="tabcontent">

@@ -113,7 +113,7 @@
         "a": "Baaaaston",
         "b": "WHERE ARE YOU FROM"
     }, {
-        "a": "If your on Linux or Mac: /usr/bin/jarvis, On Windows: /Program_Files/Jarvis/jarvis.exe",
+        "a": "If you're on Linux or Mac: /usr/bin/jarvis, On Windows: C:\\Program_Files\\Jarvis\\jarvis.exe",
         "b": "WHERE DO YOU LIVE"
     }, {
         "a": "Iiiii... No",
@@ -127,4 +127,7 @@
     }, {
         "a": "Excuse Me! What does it look like I'm doing!",
         "b": "DO YOU DO FOR A LIVING"
+    }, {
+        "a": "It's working!",
+        "b": "TEST"
     }]
