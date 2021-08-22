@@ -213,13 +213,15 @@ document.getElementById("book-four").addEventListener('click', function() {bookl
 }
 function send() {
     var filterone = byId("maininput").value.toUpperCase();
-    var filtertwo = filterone.replace("?", "").replace("I'M", "IM").replace(" R ", " ARE ").replace(" U ", " YOU ");
+    var filtertwo = filterone.replace("?", "").replace("I'M", "IM").replace(" R ", " ARE ").replace(" U ", " YOU ").replace("WHY'S", "WHYS").replace("WHY IS", "WHYS").replace("WHO'S", "WHOS").replace("WHO IS", "WHOS").replace("WHERE'S", "WHERES").replace("WHERE IS", "WHERES").replace("WHEN'S", "WHENS").replace("WHEN IS", "WHENS").replace("HOW'S", "HOWS").replace("HOW IS", "HOWS");
     var filterthree = filtertwo.replace(" OF", "");
     var filterfour = filterthree.replace("WHAT'S", "WHATS");
     var filterfive = filterfour.replace("WHAT IS", "WHATS");
     var filtersix = filterfive.replace("COLOR", "COLOUR");
     var filterseven = filtersix.split(" ");
+    ididit = false;
     if (filterseven[0] == "WHAT" || filterseven[0] == "TELL") {
+        ididit = true;
         filterseven.splice(0, 1);
         if (filterseven[0] === "IS") {
             filterseven.splice(0, 1);
@@ -369,7 +371,30 @@ function send() {
             "b": "ERROR"
         }];
     }
+    if(filterseven[0] == "WHATS" ||       
+    filterseven[0] == "WHY" || 
+    filterseven[0] == "WHYS" || 
+    filterseven[0] == "WHAT" ||
+    filterseven[0] == "WHO" ||
+    filterseven[0] == "WHOS" ||
+    filterseven[0] == "WHERE" ||
+    filterseven[0] == "WHERES" ||
+    filterseven[0] == "WHEN" ||
+    filterseven[0] == "WHENS" ||
+    filterseven[0] == "HOW" ||
+    filterseven[0] == "HOWS" ||
+    filterseven[0] == "WHOSE" ||
+    ididit == true) {
+        failBoolean = 0;
+        notfoundsearchfone = byId("maininput").value.replace("'", "").split(" ");
+        notfoundsearch = "https://www.bing.com/search?q=" + notfoundsearchfone.join("%20");
+        found = [{
+            "a": "<iframe id='errorlookup' src='"+ notfoundsearch +"'>Loading...</iframe><br><button class='yesandno w3-border w3-round' onClick='fullscreensomethin(`errorlookup`)'><i class='fa fa-expand'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(`"+ notfoundsearch +"`)'><i class='fas fa-external-link-alt'></i></button>",
+            "b": "ERROR"
+        }];
+    }
     if (/[a-z]/i.test(byId("maininput").value) == false) {
+        failBoolean = 0;
         console.log("calc-USING DETECTION");
         found = [{
             "a": "<iframe id='calciframe' src='https://www.bing.com/search?q=" + byId("maininput").value + "'>Loading...</iframe><br><button class='yesandno w3-border w3-round' onClick='fullscreensomethin(`calciframe`)'><i class='fa fa-expand'></i></button> <button class='yesandno w3-border w3-round' onClick='openinbrowser(this.parentElement.firstChild.src)'><i class='fas fa-external-link-alt'></i></button>",
@@ -450,6 +475,7 @@ function lookupinadictionary(query) {
 function cleanup() {
     byId("maininput").placeholder = "Tell Jarvis...";
     special = null;
+    showsugg()
 }
 function openinbrowser(url) {
     const { shell } = require('electron');
@@ -472,25 +498,41 @@ function fullscreensomethin(id) {
     var elem = byId(id);
     requestFullScreen(elem);
 }
+function hidesugg() {
+    for (let i = 0; i < document.getElementsByClassName("bottom-buttn").length; i++) {
+        document.getElementsByClassName("bottom-buttn")[i].disabled = true;
+    }
+}
+function showsugg() {
+    for (let i = 0; i < document.getElementsByClassName("bottom-buttn").length; i++) {
+        document.getElementsByClassName("bottom-buttn")[i].disabled = false;
+    }
+}
 function check() {
     if (byId('form').firstChild.id != "special") {
         if (byId("maininput").value.toUpperCase() == "DEFINE ") {
+            hidesugg();
             defineaWord();
         }
         if (byId("maininput").value.toUpperCase() == "LOOKUP ") {
+            hidesugg();
             lookupquery();
         }
         if (byId("maininput").value.toUpperCase() == "OPEN ") {
             openanapp();
+            hidesugg();
         }
         if (byId("maininput").value.toUpperCase() == "SET A TIMER " || byId("maininput").value.toUpperCase() == "TIMER ") {
             setaTimer();
+            hidesugg();
         }
         if (byId("maininput").value.toUpperCase() == "WEATHER ") {
             weatherspecial();
+            hidesugg();
         }
         for (let i = 0; i < prefs.extensions.length; i++) { 
         if(byId("maininput").value.toUpperCase() == prefs.extensions[i].special + " ") {
+            hidesugg();
             byId("maininput").placeholder = prefs.extensions[i].req;
             byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">'+ prefs.extensions[i].title +' | </button>');
             byId("maininput").value = null;

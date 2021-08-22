@@ -23,7 +23,6 @@
     <meta charset="UTF-8">
     <title>Jarvis, your personal assistant</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="extensions.js"></script>
     <script src="script.js"></script>
 </head>
 
@@ -72,10 +71,10 @@
                     class="w3-border w3-round" onkeyup="check()" placeholder="Tell Jarvis..." type="text">
                 <input type="submit" class="w3-border w3-round" value="Send"><br>
                 <div class="unbreakable">
-                <button type="button" title="Set a timer" class="w3-border yesandno bottom-buttn" onclick='setaTimer()'><i class="fas fa-clock"></i> Set a timer</button>
-                <button type="button" title="Launch an app" class="w3-border yesandno bottom-buttn" onclick='openanapp()'><i class="fas fa-rocket"></i> Open an app</button>
-                <button type="button" title="Search the web" class="w3-border yesandno bottom-buttn" onclick='lookupquery()'><i class="fas fa-search"></i> Lookup something</button>
-                <button type="button" title="Define a word" class="w3-border yesandno bottom-buttn" onclick='defineaWord()'><i class="fas fa-book"></i> Define a word</button>
+                <button type="button" title="Set a timer" class="w3-border yesandno bottom-buttn" onclick='setaTimer();hidesugg()'><i class="fas fa-clock"></i> Set a timer</button>
+                <button type="button" title="Launch an app" class="w3-border yesandno bottom-buttn" onclick='openanapp();hidesugg()'><i class="fas fa-rocket"></i> Open an app</button>
+                <button type="button" title="Search the web" class="w3-border yesandno bottom-buttn" onclick='lookupquery();hidesugg()'><i class="fas fa-search"></i> Lookup something</button>
+                <button type="button" title="Define a word" class="w3-border yesandno bottom-buttn" onclick='defineaWord();hidesugg()'><i class="fas fa-book"></i> Define a word</button>
                 <button type="button" title="Flip a coin" class="w3-border yesandno bottom-buttn" onclick='openinaniframe(`https://mrdivinemaniac.github.io/flip-a-coin/`, `flip a coin`)'><i class="fas fa-coins"></i> Flip a coin</button>    
             </div>
             </form>

@@ -33,7 +33,7 @@ input[type=submit], .yesandno {
     outline: none;
     border-color: grey;
     background-color: white;
-    border-radius: 25px;
+    border-radius: 25px !important;
     padding: 9px; 
     height: fit-content; 
     padding-left: 20px;

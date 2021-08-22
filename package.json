@@ -1,25 +1,33 @@
 {
-    "name": "jarvis",
-    "license": "MIT",
-    "version": "0.0.1",
-    "author": "Vestal",
-    "description": "Your Open Source Personal Assistant",
-    "main": "main.js",
-    "scripts": {
-        "start": "electron ."
-    },
-    "dependencies": {
-        "about-window": "^1.14.0",
-        "battery": "^1.0.1",
-        "electrolytic": "^0.1.1",
-        "electron": "^12.0.9",
-        "electron-context-menu": "^3.1.0",
-        "loudness": "^0.4.1",
-        "power-off": "^1.0.1",
-        "run-in-terminal": "^0.0.3",
-        "shell": "^0.8.4"
-    },
-    "devDependencies": {
-        "electron-rebuild": "^2.3.5"
-    }
+  "name": "jarvis",
+  "license": "GPL-3.0",
+  "version": "0.0.1",
+  "author": "Vestal",
+  "description": "Your Open Source Personal Assistant",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "about-window": "^1.14.0",
+    "battery": "^1.0.1",
+    "electrolytic": "^0.1.1",
+    "electron": "^12.0.9",
+    "electron-context-menu": "^3.1.0",
+    "loudness": "^0.4.1",
+    "power-off": "^1.0.1",
+    "run-in-terminal": "^0.0.3",
+    "shell": "^0.8.4"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^2.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sid220/Jarvis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sid220/Jarvis/issues"
+  },
+  "homepage": "https://github.com/Sid220/Jarvis#readme"
 }
