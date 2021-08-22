@@ -26,6 +26,8 @@ function createWindow() {
         },
         icon: "./icon.png"
     });
+    mainWindow.webContents.userAgent //to get		
+    mainWindow.webContents.userAgent = "Mozilla/5.0 (Linux; Android 8.0.0; Pixel 2 XL Build/OPD1.170816.004) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4617.2 Mobile Safari/537.36" //to set
     mainWindow.loadFile("index.html");
     mainWindow.maximize();
     mainWindow.on("closed", function() {
