@@ -17,7 +17,7 @@ window.onload = function () {
         // Load extensions
     for (let i = 0; i < prefs.extensions.length; i++) { 
             var script = document.createElement("script");  // create a script DOM node
-            script.src = "./exts/" + prefs.extensions[i].name + "/jarvis-main.js";  // set its src to the provided URL
+            script.src = "./exts/" + prefs.extensions[i].id + "/jarvis-main.js";  // set its src to the provided URL
         
             document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
         }
@@ -418,7 +418,7 @@ function send() {
         td.innerHTML = '<br><br><br><p class="ask vivify popInBottom duration-300">' + special + " " + byId("maininput").value + '</p><img class="profile" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkiQ3MylgdUv2uKdXl1htHFeHYcmoLVRCqeA&amp;usqp=CAU">';
     }
     else {
-        td.innerHTML = '<br><br><br><p class="ask vivify popInBottom duration-300">' + byId("maininput").value + '</p><img class="profile" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkiQ3MylgdUv2uKdXl1htHFeHYcmoLVRCqeA&amp;usqp=CAU">';
+        td.innerHTML = '<br><br><br><p class="ask vivify popInBottom duration-300">' + byId("maininput").value + '</p><img class="profile" src="profile.'+ prefs.profileext +'">';
     }
     tr.appendChild(td);
     if (final == "CLEAR") {
@@ -531,13 +531,15 @@ function check() {
             hidesugg();
         }
         for (let i = 0; i < prefs.extensions.length; i++) { 
-        if(byId("maininput").value.toUpperCase() == prefs.extensions[i].special + " ") {
-            hidesugg();
-            byId("maininput").placeholder = prefs.extensions[i].req;
-            byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">'+ prefs.extensions[i].title +' | </button>');
-            byId("maininput").value = null;
-            special = prefs.extensions[i].name;
-        }
+            for(let b = 0; b < prefs.extensions.special.length; b++) {
+                if(byId("maininput").value.toUpperCase() == prefs.extensions[i].special[b] + " ") {
+                    hidesugg();
+                    byId("maininput").placeholder = prefs.extensions[i].req;
+                    byId('form').insertAdjacentHTML('afterbegin', '<button type="button" title="Click to remove" onclick="this.classList.add(`vivify`, `popOut`, `duration-350`);setTimeout(() => { this.remove() }, 350);cleanup()" class="w3-border w3-rounded yesandno" id="special">'+ prefs.extensions[i].title +' | </button>');
+                    byId("maininput").value = null;
+                    special = prefs.extensions[i].name;
+                }
+            }
         }
     }
     byId("maininput").addEventListener('keydown', function (e) {

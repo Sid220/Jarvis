@@ -94,15 +94,63 @@
         window.location = "prefs.html?tab=book-button";
       }
     }
-    function openuninstall(elem) {
-      if(elem.parentElement.parentElement.firstChild.innerHTML == "core"){
-        alert("This extension is required for Jarvis to work properly.");
+    function openuninstall(id, name) {
+      var confirmed = confirm(`Are you sure you want to uninstall ${name}?`);
+      if (confirmed) {
+        const { runInTerminal } = require('run-in-terminal');
+        var cmd = "exts/" + id + "/uninstall.sh";
+        runInTerminal(cmd, null, {
+          cwd: process.cwd()
+        });
       }
       else {
-        alert("Union")
+
       }
     }
+    function openupdate(id) {
+      const { runInTerminal } = require('run-in-terminal');
+      var cmd = "exts/" + id + "/update.sh";
+      runInTerminal(cmd, null, {
+        cwd: process.cwd()
+      });
+    }
+    function openinstall(id) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+      };
+      xmlhttp.open("GET", "http://localhost/jarvis-cloud/getinstall.php?pass=pass&id=" + id, true);
+      xmlhttp.send();
+    }
     window.onload = function () {
+      if (process.platform != "linux") {
+        document.getElementById("Extensions").innerHTML = "<p>Sorry, extensions are only available on Linux</p>";
+      }
+      else {
+        document.getElementById("Extensions").innerHTML = `
+      Unfortunately, Jarvis does not have extensive extension abilities (Yet!), but some extensions are still available.
+    View them all here:<br>
+    <h4>Install a new extension</h4>
+    <div style="display: none;"></div>
+    <input class="w3-input" id="ext-id" oninput="document.getElementById('change-ext').disabled = false" type="text"
+      placeholder="Extension ID"><br><button type="submit" id="change-ext" class="w3-round w3-border w3-button"
+      disabled>Install</button>
+    <h4>Installed Extensions</h4>
+    <table id="ext-installed" class="w3-table w3-bordered">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Version</th>
+          <th>Details</th>
+          <th>Uninstall</th>
+          <th>Update</th>
+        </tr>
+      </tbody>
+    </table>`
+      }
       var fs = require('fs');
       data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
       document.getElementById("name").value = data.name;
@@ -111,9 +159,9 @@
 
       document.getElementById("bookloc").value = data.bookloc;
       i = data.extensions.length;
-      while(i != 0) {
+      while (i != 0) {
         var tr = document.createElement("TR");
-        tr.innerHTML = "<td>"+ data.extensions[i-1].name +"</td><td>"+ data.extensions[i-1].ID +"</td><td>"+ data.extensions[i-1].version +"</td><td>"+ data.extensions[i-1].details +"</td><td><button onclick='openuninstall(this)' class='w3-round w3-border w3-button'>Go</button></td><td><button class='w3-round w3-border w3-button'>Go!</button><td>";
+        tr.innerHTML = "<td>" + data.extensions[i - 1].name + "</td><td>" + data.extensions[i - 1].ID + "</td><td>" + data.extensions[i - 1].version + "</td><td>" + data.extensions[i - 1].details + "</td><td><button onclick='openuninstall(" + data.extensions[i - 1].ID + ", `" + data.extensions[i - 1].name + "`)' class='w3-round w3-border w3-button'>Go</button></td><td><button onclick='openupdate(" + data.extensions[i - 1].ID + ");' class='w3-round w3-border w3-button'>Go!</button><td>";
         document.getElementById("ext-installed").appendChild(tr);
         i -= 1;
       }
@@ -256,23 +304,6 @@
   </div>
 
   <div id="Extensions" class="tabcontent">
-    Unfortunately, Jarvis does not have extensive extension abilities (Yet!), but some extensions are still available. View them all here:<br>
-    <h4>Install a new extension</h4>
-    <div style="display: none;"></div>
-    <input class="w3-input" id="ext-id" oninput="document.getElementById('change-ext').disabled = false" type="text" placeholder="Extension ID"><br><button type="submit" id="change-ext" class="w3-round w3-border w3-button" disabled>Install</button>
-    <h4>Installed Extensions</h4>
-    <table id="ext-installed" class="w3-table w3-bordered">
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <th>ID</th>
-          <th>Version</th>
-          <th>Details</th>
-          <th>Uninstall</th>
-          <th>Update</th>
-        </tr>
-      </tbody>
-    </table>
   </div>
 
   <div id="Help" class="tabcontent">
