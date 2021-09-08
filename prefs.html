@@ -118,7 +118,11 @@
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("txtHint").innerHTML = this.responseText;
+          const { runInTerminal } = require('run-in-terminal');
+          var cmd = "./exts/install.sh";
+          runInTerminal(cmd, [this.responseText, id], {
+            cwd: process.cwd()
+          });
         }
       };
       xmlhttp.open("GET", "http://localhost/jarvis-cloud/getinstall.php?pass=pass&id=" + id, true);
@@ -135,7 +139,7 @@
     <h4>Install a new extension</h4>
     <div style="display: none;"></div>
     <input class="w3-input" id="ext-id" oninput="document.getElementById('change-ext').disabled = false" type="text"
-      placeholder="Extension ID"><br><button type="submit" id="change-ext" class="w3-round w3-border w3-button"
+      placeholder="Extension ID"><br><button onclick="openinstall(document.getElementById('ext-id').value)" type="submit" id="change-ext" class="w3-round w3-border w3-button"
       disabled>Install</button>
     <h4>Installed Extensions</h4>
     <table id="ext-installed" class="w3-table w3-bordered">
@@ -282,6 +286,11 @@
         oninput="document.getElementById('change-you').disabled = ''" placeholder="First Name"><br>
       <input id="last" class="w3-input" type="text" oninput="document.getElementById('change-you').disabled = ''"
         placeholder="Last Name"><br>
+      Background: <select style="outline: none;" class="w3-button">
+          <option>Daily image</option>
+          <option>Solid color</option>
+          <option>Static image</option>
+        </select>
       <button type="submit" id="change-you" class="w3-round w3-border w3-button" disabled>Change</button>
     </form>
   </div>

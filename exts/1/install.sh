@@ -10,4 +10,4 @@ jq '.extensions[.extensions | length] |= . + {
             "special": "RUN",
             "req": "command | app",
             "title": "Run in terminal"
-        }' ../../prefs.json > tmp.$$.json && mv tmp.$$.json ../../prefs.json
+        }' prefs.json > tmp.$$.json && mv tmp.$$.json prefs.json

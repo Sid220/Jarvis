@@ -13,7 +13,7 @@ echo "Current Version: $temp"
 
 function update() {
     echo "Updating"
-    curl -s https://raw.githubusercontent.com/Sid220/jarvis-extensions/main/run%20in%20terminal/upgrade.sh | bash -s
+    curl -s https://raw.githubusercontent.com/Sid220/jarvis-extensions/main/1/upgrade.sh | bash -s
 }
 
 # Check if needed to be upgraded
