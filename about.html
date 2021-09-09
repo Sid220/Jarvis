@@ -10,7 +10,9 @@
             font-size: 28px;
             font-weight: bold;
           }
-          
+          u {
+            cursor: pointer;
+          }
           .close:hover,
           .close:focus {
             color: #000;
@@ -23,8 +25,9 @@
                 <span class="close" onclick="self.close()">&times;</span>
             <center>
                 <h1>Background Image:</h1>
-                <img id="img" style="height: 100px;" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Loader.gif"><p id="by">Loading...</p><p id="loc"></p><a
-                        href="https://pixabay.com/service/license/">Pixabay</a><br><button
+                <h2 id="funny"></h2>
+                <img id="img" style="height: 100px;" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Loader.gif"><p id="by">Loading...</p><p id="loc"></p><u
+                onclick="openinbrowser(`https://pixabay.com/service/license/`)">Pixabay</u><br><button
                         onclick="openinbrowser(data[0].url)"
                         class="w3-button" id="down">Download</button>
             </center>
@@ -42,7 +45,10 @@ async function getText(file) {
   let myText = await myObject.text();
 	data = JSON.parse(myText);
   console.log(data);
-  document.getElementById("by").innerHTML = "By: " + data[0].by;
+  document.getElementById("by").innerHTML = "By: <u onclick=\"openinbrowser(`https://pixabay.com/users/" + data[0].by + "`)\">"+ data[0].by +"</u>";
+  if(data[0].funny != "undefined") {
+  document.getElementById("funny").innerHTML = data[0].funny;
+  }
   if(data[0].loc != "undefined") {
   document.getElementById("loc").innerHTML = "Location: " + data[0].loc;
   }

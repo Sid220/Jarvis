@@ -9,7 +9,17 @@ function byId(laid) {
 byId('loading-details').innerHTML = 'Loaded the JS';
 window.onload = function () {    
     byId('loading-details').innerHTML = 'Loading the background image';
-    getText("https://www.vestal.ml/jarvis-cloud/change.json");
+    
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        data = JSON.parse(this.responseText);
+        console.log(data);
+        if(prefs.back == "0") {
+        document.body.style.backgroundImage = `url("${data[0].cdn}")`;
+        }
+    }
+        xhttp.open("GET", "https://www.vestal.ml/jarvis-cloud/change.json");
+        xhttp.send();
 
     var fs = require('fs');
     prefs = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
@@ -90,15 +100,6 @@ document.getElementById("book-four").addEventListener('click', function() {bookl
         document.getElementById("book-five").addEventListener('click', function() {bookloc(booklocvar, prefs.bookmarks[4].url)})
         }
 
-    async function getText(file) {
-        let myObject = await fetch(file);
-        let myText = await myObject.text();
-        data = JSON.parse(myText);
-        console.log(data);
-        if(prefs.back == "0") {
-        document.body.style.backgroundImage = `url("${data[0].cdn}")`;
-        }
-    }
     var form = byId("form");
     function handleForm(event) { event.preventDefault(); }
     form.addEventListener('submit', handleForm);
