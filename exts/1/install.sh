@@ -7,7 +7,7 @@ jq '.extensions[.extensions | length] |= . + {
             "version": "0.0.1",
             "details": "Extension that allows you to run commands in your terminal",
             "func": "runInTerminal()",
-            "special": "RUN",
+            "special": ["RUN", "TERMINAL"],
             "req": "command | app",
             "title": "Run in terminal"
         }' prefs.json > tmp.$$.json && mv tmp.$$.json prefs.json

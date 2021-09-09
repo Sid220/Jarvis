@@ -17,7 +17,7 @@ window.onload = function () {
         // Load extensions
     for (let i = 0; i < prefs.extensions.length; i++) { 
             var script = document.createElement("script");  // create a script DOM node
-            script.src = "./exts/" + prefs.extensions[i].id + "/jarvis-main.js";  // set its src to the provided URL
+            script.src = "./exts/" + prefs.extensions[i].ID + "/jarvis-main.js";  // set its src to the provided URL
         
             document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
         }
@@ -95,7 +95,9 @@ document.getElementById("book-four").addEventListener('click', function() {bookl
         let myText = await myObject.text();
         data = JSON.parse(myText);
         console.log(data);
+        if(prefs.back == "0") {
         document.body.style.backgroundImage = `url("${data[0].cdn}")`;
+        }
     }
     var form = byId("form");
     function handleForm(event) { event.preventDefault(); }
@@ -531,7 +533,7 @@ function check() {
             hidesugg();
         }
         for (let i = 0; i < prefs.extensions.length; i++) { 
-            for(let b = 0; b < prefs.extensions.special.length; b++) {
+            for(let b = 0; b < prefs.extensions[i].special.length; b++) {
                 if(byId("maininput").value.toUpperCase() == prefs.extensions[i].special[b] + " ") {
                     hidesugg();
                     byId("maininput").placeholder = prefs.extensions[i].req;

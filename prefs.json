@@ -2,6 +2,7 @@
   "name": "Sidney",
   "last": "Trzepacz",
   "profileext": "svg",
+  "back": "0",
   "uno": false,
   "unousername": null,
   "bookmarks": [
@@ -40,7 +41,7 @@
       "version": "0.0.1",
       "details": "Extension that allows you to run commands in your terminal",
       "func": "runInTerminal()",
-      "special": "RUN",
+      "special": ["RUN", "TERMINAL"],
       "req": "command | app",
       "title": "Run in terminal"
     }

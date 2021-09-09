@@ -169,7 +169,7 @@
         document.getElementById("ext-installed").appendChild(tr);
         i -= 1;
       }
-      //document.getElementById("ext-installed")
+      document.getElementById("back").value = data.back;
 
       const edit1 = " <a href='editbookmark.html?book=";
       const edit2 = "' class='w3-text-blue'>[edit]</a> <a href='#' onclick='deletes("
@@ -248,7 +248,7 @@
 
   <div id="You" class="tabcontent">
     <form id="form-you"
-      onsubmit="data.name = document.getElementById('name').value;data.last = document.getElementById('last').value;sendData();document.getElementById('change-you').disabled = 'true'">
+      onsubmit="data.name = document.getElementById('name').value;data.last = document.getElementById('last').value;data.back = document.getElementById('back').value;sendData();document.getElementById('change-you').disabled = 'true'">
       <div id="holder">
         Profile:
         <img ondragstart="return false;" style='width: 40px; height: 40px; border-radius: 50%' id="pfp">
@@ -286,11 +286,10 @@
         oninput="document.getElementById('change-you').disabled = ''" placeholder="First Name"><br>
       <input id="last" class="w3-input" type="text" oninput="document.getElementById('change-you').disabled = ''"
         placeholder="Last Name"><br>
-      Background: <select style="outline: none;" class="w3-button">
-          <option>Daily image</option>
-          <option>Solid color</option>
-          <option>Static image</option>
-        </select>
+      Background: <select required oninput="document.getElementById('change-you').disabled = ''" id="back" style="outline: none;" class="w3-button">
+          <option value="0">Daily image</option>
+          <option value="1">White</option>
+        </select><br>
       <button type="submit" id="change-you" class="w3-round w3-border w3-button" disabled>Change</button>
     </form>
   </div>
