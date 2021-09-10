@@ -10,27 +10,27 @@
       "url": "https://www.msn.com/en-us/news",
       "name": "News",
       "icon": "FONTAWESOME:far fa-newspaper"
-    },
-    {
-      "url": "https://www.google.com",
-      "name": "Google",
-      "icon": "https://www.google.com/favicon.ico"
-    },
-    {
+  },
+  {
+      "url": "https://www.bing.com/maps?FORM=Z9LH2",
+      "name": "Maps",
+      "icon": "FONTAWESOME:fas fa-map-marker-alt"
+  },
+  {
       "url": "https://www.msn.com/en-us/weather",
       "name": "Weather",
       "icon": "FONTAWESOME:fas fa-sun"
-    },
-    {
-      "url": "https://www.vestal.ml/nextcloud",
-      "name": "Nextcloud",
-      "icon": "https://cdn.iconscout.com/icon/free/png-512/nextcloud-2752119-2284936.png"
-    },
-    {
-      "url": null,
-      "name": null,
-      "icon": null
-    }
+  },
+  {
+      "url": "https://www.msn.com/en-us/money",
+      "name": "Finance",
+      "icon": "FONTAWESOME:fas fa-chart-line"
+  },
+  {
+      "url": "https://www.bing.com/shop?FORM=Z9LHS4",
+      "name": "Shopping",
+      "icon": "FONTAWESOME:fas fa-shopping-cart"
+  }
   ],
   "bookloc": "other",
   "openinnewwindow": false,

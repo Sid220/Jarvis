@@ -24,7 +24,7 @@ function createWindow() {
             webSecurity: false,
             spellcheck: true,
         },
-        icon: "./icon.png"
+        icon: __dirname + "/icon.png"
     });
     mainWindow.webContents.userAgent //to get		
     mainWindow.webContents.userAgent = "Mozilla/5.0 (Linux; Android 8.0.0; Pixel 2 XL Build/OPD1.170816.004) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4617.2 Mobile Safari/537.36" //to set
@@ -78,10 +78,17 @@ function openPrefWindow() {
             webSecurity: false,
             spellcheck: true,
         },
-        icon: "./icon.png"
+        icon: __dirname + "/icon.png"
     });
     prefWindow.loadFile("prefs.html");
-    prefWindow.setMenu(null)
+    prefWindow.setMenu(null);
+    prefWindow.on("close", function() {
+        const { dialog } = require('electron')
+        dialog.showMessageBox({
+            message: "Jarvis must be reloaded for your changes (if any) to take effect.",
+            buttons: ["OK"]
+        });
+    });
 }
 contextMenu({
 	prepend: (defaultActions, parameters, browserWindow) => [

@@ -409,7 +409,7 @@ function send() {
     document.getElementsByTagName("TBODY")[0].appendChild(tr);
     var td = document.createElement("TD");
     td.classList.add("responsecontainer");
-    td.innerHTML = '<br><br><br><img class="profile" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/NYCS-bull-trans-S.svg"><p class="response vivify popInBottom duration-300">' + found[0].a + '</p>';
+    td.innerHTML = '<br><br><br><img class="profile" src="icon.png"><p class="response vivify popInBottom duration-300">' + found[0].a + '</p>';
     tr.appendChild(td);
 
     var td = document.createElement("TD");
@@ -428,13 +428,11 @@ function send() {
         while (document.getElementsByTagName(`tbody`)[0].firstChild) { document.getElementsByTagName(`tbody`)[0].removeChild(document.getElementsByTagName(`tbody`)[0].firstChild); }
     }
 
-    // UNCOMMENT ON RELEASE
-/*     // Send info to server (see jarvis-server-side repo)
+   // Send info to server (see jarvis-server-side repo)
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "http://localhost/jarvis-cloud/sendtoserver.php?pass=pass&command=" + byId("maininput").value + "&fail=" + failBoolean + "&special=" + specialBoolean, true);
+    xmlhttp.open("GET", "https://www.vestal.ml/jarvis-cloud/sendtoserver.php?pass=pass&command=" + byId("maininput").value + "&fail=" + failBoolean + "&special=" + specialBoolean, true);
     xmlhttp.send();
-    // Back to your regularly scheduled programing */
-    // This was: UNCOMMENT ON RELEASE
+    // Back to your regularly scheduled programing
 
     // Clean up
     byId("maininput").value = null;
@@ -448,7 +446,7 @@ function openinaniframe(url, lookup) {
     document.getElementsByTagName("TBODY")[0].appendChild(tr);
     var td = document.createElement("TD");
     td.classList.add("responsecontainer");
-    td.innerHTML = '<br><br><br><img class="profile" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/NYCS-bull-trans-S.svg"><p class="response vivify popInBottom duration-300"><iframe id="lookupclick" src="' + url + '">Loading...</iframe><br>Search by <a href="https://www.bing.com">Bing</a> <button class="yesandno w3-border w3-round" onClick="fullscreensomethin(`lookupclick`)"><i class="fa fa-expand"></i></button> <button class="yesandno w3-border w3-round" onClick="openinbrowser(`' + url + '`)"><i class="fas fa-external-link-alt"></i></button>';
+    td.innerHTML = '<br><br><br><img class="profile" src="icon.png"><p class="response vivify popInBottom duration-300"><iframe id="lookupclick" src="' + url + '">Loading...</iframe><br>Search by <a href="https://www.bing.com">Bing</a> <button class="yesandno w3-border w3-round" onClick="fullscreensomethin(`lookupclick`)"><i class="fa fa-expand"></i></button> <button class="yesandno w3-border w3-round" onClick="openinbrowser(`' + url + '`)"><i class="fas fa-external-link-alt"></i></button>';
     tr.appendChild(td);
 
     var td = document.createElement("TD");
@@ -464,7 +462,7 @@ function lookupinadictionary(query) {
     document.getElementsByTagName("TBODY")[0].appendChild(tr);
     var td = document.createElement("TD");
     td.classList.add("responsecontainer");
-    td.innerHTML = '<br><br><br><img class="profile" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/NYCS-bull-trans-S.svg"><p class="response vivify popInBottom duration-300"><iframe id="dicclick" src="https://www.vestal.ml/jarvis-cloud/dictionary/index.php?word=' + query + '">Loading...</iframe><br>Vestal Dictionary <button class="yesandno w3-border w3-round" onClick="fullscreensomethin(`dicclick`)"><i class="fa fa-expand"></i></button> <button class="yesandno w3-border w3-round" onClick="openinbrowser(`https://www.vestal.ml/jarvis-cloud/dictionary/index.php?word=' + query + '`)"><i class="fas fa-external-link-alt"></i></button>';
+    td.innerHTML = '<br><br><br><img class="profile" src="icon.png"><p class="response vivify popInBottom duration-300"><iframe id="dicclick" src="https://www.vestal.ml/jarvis-cloud/dictionary/index.php?word=' + query + '">Loading...</iframe><br>Vestal Dictionary <button class="yesandno w3-border w3-round" onClick="fullscreensomethin(`dicclick`)"><i class="fa fa-expand"></i></button> <button class="yesandno w3-border w3-round" onClick="openinbrowser(`https://www.vestal.ml/jarvis-cloud/dictionary/index.php?word=' + query + '`)"><i class="fas fa-external-link-alt"></i></button>';
     tr.appendChild(td);
 
     var td = document.createElement("TD");
