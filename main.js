@@ -4,7 +4,7 @@ const os = require("os");
 const contextMenu = require('electron-context-menu');
 const join = require('path').join;
 const openAboutWindow = require('about-window').default;
-/* const Electrolytic = require('electrolytic')
+const Electrolytic = require('electrolytic')
 const electrolytic = Electrolytic({
     appKey: 'zpVJlLuSxD49A618hnvc'
   })
@@ -13,7 +13,7 @@ const electrolytic = Electrolytic({
     .analytics
     .enable(true)
     .use(app)
-    .report() */
+    .report()
 let mainWindow;
 function createWindow() {
     mainWindow = new BrowserWindow({

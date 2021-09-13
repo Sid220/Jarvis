@@ -156,7 +156,7 @@
     </table>`
       }
       var fs = require('fs');
-      data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
+      data = JSON.parse(fs.readFileSync(__dirname + '/prefs.json', 'utf8'));
       document.getElementById("name").value = data.name;
       document.getElementById("last").value = data.last;
       document.getElementById("pfp").src = "profile." + data.profileext;

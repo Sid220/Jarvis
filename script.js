@@ -1,6 +1,4 @@
 byId('loading-details').innerHTML = 'Loaded the HTML';
-const { lookup } = require("dns");
-const { from } = require("responselike");
 console.warn("%cWARNING:\n%c\"Give us a break!\"\n%cDO NOT:%cCopy and paste code you don't understand!!!\nThis can mess up your installation, OR EVEN YOUR COMPUTER!%c\"Don't do it!\"%c\n\nAny GitHub issues created by idiots who copied and pasted code will be ignored! Have Fun!", "font-size: 100px; color: red;", "color:black;font-size:45px", "text-decoration: underline;font-weight: bold;color:black;font-size:30px", "color:black;font-size:30px","font-size:45px;color:black", "color:black;");
 special = null;
 function byId(laid) {
@@ -22,7 +20,7 @@ window.onload = function () {
         xhttp.send();
 
     var fs = require('fs');
-    prefs = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
+    prefs = JSON.parse(fs.readFileSync(__dirname + '/prefs.json', 'utf8'));
 
         // Load extensions
     for (let i = 0; i < prefs.extensions.length; i++) { 
@@ -167,9 +165,7 @@ document.getElementById("book-four").addEventListener('click', function() {bookl
         byId("time").innerHTML = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getHours() + ":" + minute;
         getVolume();
     }, 2000);
-    const electron = require('electron');
-    const path = require('path');
-    const dialog = electron.remote.dialog;
+    const { dialog } = require('electron')
 
     var showBox = document.getElementById('poweroff');
 
@@ -257,13 +253,13 @@ function send() {
     }
     if (filterseven[0] == "FAVORITE") {
         var fs = require('fs');
-        data = JSON.parse(fs.readFileSync('fun.json', 'utf8')).favorite;
+        data = JSON.parse(fs.readFileSync(__dirname + '/fun.json', 'utf8')).favorite;
         filterseven.splice(0, 1);
         var final = filterseven.join(" ");
     }
     else {
         var fs = require('fs');
-        data = JSON.parse(fs.readFileSync('general.json', 'utf8'));
+        data = JSON.parse(fs.readFileSync(__dirname + '/general.json', 'utf8'));
     }
     if (special != null) {
         specialBoolean = 1;

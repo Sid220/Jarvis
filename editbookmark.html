@@ -62,7 +62,7 @@
         const join = require('path').join;
         window.onload = function () {
             var fs = require('fs');
-            data = JSON.parse(fs.readFileSync('prefs.json', 'utf8'));
+            data = JSON.parse(fs.readFileSync(__dirname + '/prefs.json', 'utf8'));
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             book = urlParams.get("book");
